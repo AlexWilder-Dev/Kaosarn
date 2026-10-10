@@ -1,0 +1,23 @@
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--gold);
+}
+
+.ornament[data-tone='ink'] {
+  color: var(--gold-ink);
+}
+
+.ornament span {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.lotus {
+  flex: none;
+  width: 44px;
+  height: auto;
+}

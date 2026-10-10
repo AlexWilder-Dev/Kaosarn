@@ -2,7 +2,7 @@ import manifest from './photo-manifest.json';
 
 // Written by `npm run photos` (scripts/fetch-photos.mjs) and committed with the
 // WebP files in public/photos/, so builds never depend on a download.
-export type PhotoSlot = 'hero' | 'story' | 'menu' | 'groups' | 'visit';
+export type PhotoSlot = 'hero' | 'room' | 'story' | 'groups' | 'visit';
 
 export type PhotoEntry = {
   width: number;

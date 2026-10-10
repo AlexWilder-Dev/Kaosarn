@@ -1,8 +1,9 @@
 # Kaosarn Tooting
 
 A demo website for Kaosarn, the Thai restaurant at 181 Tooting High Street, London SW17 0SZ.
-Styled after the restaurant's current site: dark olive, deep red and terracotta with cream type,
-led by their own photos. Built mobile-first.
+Their own colours (olive, deep red, terracotta, cream) and photos, set like a printed menu: Fraunces
+with Thai lettering in Trirong and Charmonman, brass hairlines and a lotus ornament, arch-framed
+photography. Built mobile-first.
 
 Static front end only. There's no CMS, database, payments, email or analytics, and the group enquiry
 form doesn't send anything.

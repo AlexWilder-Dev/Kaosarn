@@ -3,6 +3,7 @@ import { dishById } from '../data/menu';
 import { hasPhoto } from '../data/photos';
 import { Photo } from './Photo';
 import { EnquiryForm } from './EnquiryForm';
+import { Lotus } from './Ornament';
 import styles from './Groups.module.css';
 
 // An example spread of real menu dishes (the actual set isn't published).
@@ -30,7 +31,7 @@ export function Groups() {
         <header className={styles.head}>
           <span className="kicker">Groups &amp; birthdays</span>
           <h2 id="groups-title" className="section-title">
-            Big table <span className="accent">energy</span>
+            Big table <em>energy</em>
           </h2>
           <p className="lede">
             Birthdays, catch-ups, the whole group chat. Kaosarn is a favourite for big tables, and our tasting set menu
@@ -63,10 +64,12 @@ export function Groups() {
 
           <div className={styles.side}>
             <div className={styles.set}>
+              <Lotus className={styles.setLotus} />
               <div className={styles.setHead}>
                 <h3 className={styles.setTitle}>The sharing set</h3>
                 <p className={styles.setPrice}>
-                  <span>Price</span> Ask us
+                  <span>Price</span>
+                  <em>Ask us</em>
                 </p>
               </div>
               <p className={styles.setNote}>An example spread from our menu. Ask us what’s in the set.</p>

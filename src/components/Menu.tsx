@@ -1,13 +1,12 @@
-import { useEffect, useRef, useState, type MouseEvent } from 'react';
-import { AnimatePresence, LayoutGroup, animate, motion, useReducedMotion } from 'framer-motion';
+import { useRef, useState, type KeyboardEvent } from 'react';
+import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion';
 import { MENU, SPICE_LEVELS, TAGS, formatPrice, type Category, type Dish, type Tag } from '../data/menu';
-import { Photo } from './Photo';
-import { hasPhoto } from '../data/photos';
+import { Ornament } from './Ornament';
 import { Check, Chilli, Rice } from './Icons';
 import styles from './Menu.module.css';
 
 const TAG_ORDER: Tag[] = ['V', 'GF', 'H'];
-const spring = { type: 'spring', stiffness: 420, damping: 34 } as const;
+const spring = { type: 'spring', stiffness: 380, damping: 34 } as const;
 
 type SpiceChoice = Record<string, string>;
 
@@ -15,210 +14,162 @@ const matches = (dish: Dish, active: Tag[]) => active.every((t) => dish.tags.inc
 const filterable = MENU.filter((c) => !c.compact);
 const totalDishes = filterable.reduce((n, c) => n + c.dishes.length, 0);
 
+/** Dishes shown for a category. Sides are add-ons, so dietary filters don't hide them. */
+const visible = (c: Category, active: Tag[]) => (c.compact ? c.dishes : c.dishes.filter((d) => matches(d, active)));
+
 export function Menu() {
+  const reduce = useReducedMotion();
   const [active, setActive] = useState<Tag[]>([]);
   const [spice, setSpice] = useState<SpiceChoice>({});
   const [current, setCurrent] = useState(MENU[0].id);
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  const category = MENU.find((c) => c.id === current) ?? MENU[0];
+  const shown = filterable.reduce((n, c) => n + visible(c, active).length, 0);
 
   const toggle = (tag: Tag) =>
     setActive((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : TAG_ORDER.filter((t) => t === tag || prev.includes(t)),
     );
 
-  const shown = filterable.reduce((n, c) => n + c.dishes.filter((d) => matches(d, active)).length, 0);
+  const choose = (id: string, focus = false) => {
+    setCurrent(id);
+    if (focus) document.getElementById(`menu-tab-${id}`)?.focus();
+  };
 
-  useScrollSpy(setCurrent);
+  // Jump to Sides from a "no rice" note: switch tab, bring the tabs into view.
+  const showSides = () => {
+    setCurrent('sides');
+    tabsRef.current?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  };
+
+  const onTabKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    const i = MENU.findIndex((c) => c.id === current);
+    const next =
+      e.key === 'ArrowRight'
+        ? (i + 1) % MENU.length
+        : e.key === 'ArrowLeft'
+          ? (i - 1 + MENU.length) % MENU.length
+          : e.key === 'Home'
+            ? 0
+            : e.key === 'End'
+              ? MENU.length - 1
+              : -1;
+    if (next < 0) return;
+    e.preventDefault();
+    choose(MENU[next].id, true);
+  };
 
   return (
     <section id="menu" className={`section ${styles.menu}`} aria-labelledby="menu-title">
-      <div className={`wrap ${styles.intro}`} data-photo={hasPhoto('menu')}>
-        <div className={styles.introHead}>
-          <span className="kicker">the main event</span>
+      <div className="wrap">
+        <header className={styles.head}>
+          <span className="kicker">The main event</span>
           <h2 id="menu-title" className="section-title">
-            The <span className="accent">Menu</span>
+            The <em>menu</em>
           </h2>
-        </div>
-
-        {hasPhoto('menu') && (
-          <div className={styles.introPhoto}>
-            <Photo
-              slot="menu"
-              alt="Larb, som tum and grilled beef salad on enamel plates"
-              sizes="(min-width: 900px) 380px, 92vw"
-              className={styles.photo}
-            />
-            <span className={styles.photoTag}>fresh from the wok</span>
-          </div>
-        )}
-
-        <div className={styles.introBody}>
-          <p className="lede">
+          <p className={styles.lede}>
             Street-style Thai, home cooked. Order a few things, put them in the middle and share the lot.
           </p>
+          <Ornament tone="ink" className={styles.ornament} />
+        </header>
 
-          <div className={styles.filters}>
-            <p id="filter-label" className={styles.filterLabel}>
-              Filter dishes
-            </p>
-            <div className={styles.chips} role="group" aria-labelledby="filter-label">
-              {TAG_ORDER.map((tag) => {
-                const on = active.includes(tag);
+        <div className={styles.filters}>
+          <p id="filter-label" className={styles.filterLabel}>
+            Dietary
+          </p>
+          <div className={styles.chips} role="group" aria-labelledby="filter-label">
+            {TAG_ORDER.map((tag) => {
+              const on = active.includes(tag);
+              return (
+                <motion.button
+                  key={tag}
+                  type="button"
+                  className={styles.chip}
+                  data-tag={tag}
+                  aria-pressed={on}
+                  onClick={() => toggle(tag)}
+                  whileTap={{ scale: 0.95 }}
+                  transition={spring}
+                >
+                  <span className={styles.chipMark} aria-hidden="true">
+                    {on ? <Check /> : tag}
+                  </span>
+                  {TAGS[tag].label}
+                </motion.button>
+              );
+            })}
+          </div>
+          <p className={styles.count} aria-live="polite">
+            {active.length ? (
+              <>
+                <strong>{shown}</strong> of {totalDishes} dishes match.{' '}
+                <button type="button" className={styles.clear} onClick={() => setActive([])}>
+                  Clear
+                </button>
+              </>
+            ) : (
+              <>Tags are as listed by the restaurant. If you have an allergy, please tell the team when you order.</>
+            )}
+          </p>
+        </div>
+
+        <div ref={tabsRef} className={styles.tabsBar}>
+          <LayoutGroup id="menu-tabs">
+            <div className={styles.tabs} role="tablist" aria-label="Menu sections" onKeyDown={onTabKey}>
+              {MENU.map((c) => {
+                const on = c.id === current;
                 return (
-                  <motion.button
-                    key={tag}
+                  <button
+                    key={c.id}
+                    id={`menu-tab-${c.id}`}
                     type="button"
-                    className={styles.chip}
-                    data-tag={tag}
-                    aria-pressed={on}
-                    onClick={() => toggle(tag)}
-                    whileTap={{ scale: 0.94 }}
-                    transition={spring}
+                    role="tab"
+                    aria-selected={on}
+                    aria-controls="menu-panel"
+                    tabIndex={on ? 0 : -1}
+                    className={styles.tab}
+                    onClick={() => choose(c.id)}
                   >
-                    <span className={styles.chipMark} aria-hidden="true">
-                      {on ? <Check /> : tag}
+                    <span className={styles.tabLabel}>{c.title}</span>
+                    <span className={styles.tabThai} lang="th">
+                      {c.thai}
                     </span>
-                    {TAGS[tag].label}
-                  </motion.button>
+                    <span className={styles.tabCount} aria-label={`${visible(c, active).length} dishes`}>
+                      {visible(c, active).length}
+                    </span>
+                    {on && <motion.span layoutId="menu-tab-mark" className={styles.tabMark} transition={spring} />}
+                  </button>
                 );
               })}
             </div>
-            <p className={styles.count} aria-live="polite">
-              {active.length ? (
-                <>
-                  Showing <strong>{shown}</strong> of {totalDishes} dishes{' '}
-                  <button type="button" className={styles.clear} onClick={() => setActive([])}>
-                    Clear filters
-                  </button>
-                </>
-              ) : (
-                <>
-                  {totalDishes} dishes, plus sides. Tags are as listed by the restaurant; if you have an allergy, please
-                  tell the team when you order.
-                </>
-              )}
-            </p>
-          </div>
+          </LayoutGroup>
         </div>
-      </div>
 
-      <MenuNav current={current} active={active} onClear={() => setActive([])} />
-
-      <div className="wrap">
-        {MENU.map((cat) => (
-          <CategoryBlock
-            key={cat.id}
-            category={cat}
-            active={cat.compact ? [] : active}
-            spice={spice}
-            onSpice={(id, level) => setSpice((s) => ({ ...s, [id]: level }))}
-            onClear={() => setActive([])}
-          />
-        ))}
+        <div id="menu-panel" role="tabpanel" aria-labelledby={`menu-tab-${current}`} className={styles.panel}>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={current}
+              initial={reduce ? false : { opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? undefined : { opacity: 0, y: -10 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+            >
+              <CategoryBlock
+                category={category}
+                active={category.compact ? [] : active}
+                spice={spice}
+                onSpice={(id, level) => setSpice((s) => ({ ...s, [id]: level }))}
+                onClear={() => setActive([])}
+                onSides={showSides}
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
         <p className={styles.footnote}>Sample prices — please check with the restaurant.</p>
       </div>
     </section>
-  );
-}
-
-/** Tracks which category is under the sticky nav. */
-function useScrollSpy(onChange: (id: string) => void) {
-  useEffect(() => {
-    let frame = 0;
-    const check = () => {
-      frame = 0;
-      const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) + 90;
-      let id = MENU[0].id;
-      for (const c of MENU) {
-        const el = document.getElementById(`menu-${c.id}`);
-        if (el && el.getBoundingClientRect().top <= offset) id = c.id;
-      }
-      onChange(id);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(check);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    check();
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(frame);
-    };
-  }, [onChange]);
-}
-
-function MenuNav({ current, active, onClear }: { current: string; active: Tag[]; onClear: () => void }) {
-  const reduce = useReducedMotion();
-  const listRef = useRef<HTMLUListElement>(null);
-
-  // Keep the active tab in view inside the horizontally scrolling bar. Animated by hand:
-  // a native smooth scrollTo here would cancel the page's own smooth scroll in Chrome.
-  useEffect(() => {
-    const list = listRef.current;
-    const tab = list?.querySelector<HTMLElement>(`[data-id="${current}"]`);
-    if (!list || !tab) return;
-    const max = list.scrollWidth - list.clientWidth;
-    const target = Math.min(max, Math.max(0, tab.offsetLeft - (list.clientWidth - tab.offsetWidth) / 2));
-    if (reduce) {
-      list.scrollLeft = target;
-      return;
-    }
-    const controls = animate(list.scrollLeft, target, {
-      type: 'spring',
-      stiffness: 260,
-      damping: 34,
-      onUpdate: (v) => (list.scrollLeft = v),
-    });
-    return () => controls.stop();
-  }, [current, reduce]);
-
-  const jump = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    document.getElementById(`menu-${id}`)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-    history.replaceState(null, '', `#menu-${id}`);
-  };
-
-  return (
-    <nav className={styles.nav} aria-label="Menu sections">
-      <div className={`wrap ${styles.navInner}`}>
-        <LayoutGroup id="menu-nav">
-          <ul ref={listRef} className={styles.tabs}>
-            {MENU.map((c) => {
-              const on = c.id === current;
-              return (
-                <li key={c.id} data-id={c.id}>
-                  <a
-                    href={`#menu-${c.id}`}
-                    className={styles.tab}
-                    aria-current={on ? 'true' : undefined}
-                    onClick={(e) => jump(e, c.id)}
-                  >
-                    {on && <motion.span layoutId="menu-tab" className={styles.tabPill} transition={spring} />}
-                    <span className={styles.tabLabel}>{c.title}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </LayoutGroup>
-        <AnimatePresence initial={false}>
-          {active.length > 0 && (
-            <motion.button
-              type="button"
-              className={styles.navClear}
-              onClick={onClear}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={spring}
-            >
-              {active.join(' + ')} <span aria-hidden="true">×</span>
-              <span className="visually-hidden">Clear filters</span>
-            </motion.button>
-          )}
-        </AnimatePresence>
-      </div>
-    </nav>
   );
 }
 
@@ -228,24 +179,18 @@ type BlockProps = {
   spice: SpiceChoice;
   onSpice: (id: string, level: string) => void;
   onClear: () => void;
+  onSides: () => void;
 };
 
-function CategoryBlock({ category, active, spice, onSpice, onClear }: BlockProps) {
-  const dishes = category.dishes.filter((d) => matches(d, active));
+function CategoryBlock({ category, active, spice, onSpice, onClear, onSides }: BlockProps) {
+  const dishes = visible(category, active);
   const hasNoRice = category.dishes.some((d) => d.noRice);
 
   return (
-    <section
-      id={`menu-${category.id}`}
-      className={styles.category}
-      data-cat={category.id}
-      aria-labelledby={`menu-${category.id}-title`}
-    >
+    <div className={styles.category}>
       <header className={styles.catHead}>
-        <h3 id={`menu-${category.id}-title`} className={styles.catTitle}>
-          {category.title}
-        </h3>
-        <span className={styles.catThai} lang="th" aria-hidden="true">
+        <h3 className={styles.catTitle}>{category.title}</h3>
+        <span className={styles.catThai} lang="th">
           {category.thai}
         </span>
       </header>
@@ -255,14 +200,17 @@ function CategoryBlock({ category, active, spice, onSpice, onClear }: BlockProps
           <Rice className={styles.riceIcon} />
           <span>
             Curries and Pad Kra-Praw come <strong>without rice</strong>.{' '}
-            <a href="#menu-sides">Add some from the sides</a>.
+            <button type="button" className={styles.inlineLink} onClick={onSides}>
+              Add some from the sides
+            </button>
+            .
           </span>
         </p>
       )}
 
       {category.compact ? (
         <ul className={styles.sides}>
-          {category.dishes.map((d) => (
+          {dishes.map((d) => (
             <li key={d.id} className={styles.side}>
               <span className={styles.sideName}>
                 {d.name}
@@ -283,26 +231,26 @@ function CategoryBlock({ category, active, spice, onSpice, onClear }: BlockProps
               <motion.li
                 key={d.id}
                 layout
-                initial={{ opacity: 0, scale: 0.94 }}
+                initial={{ opacity: 0, scale: 0.97 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.94 }}
+                exit={{ opacity: 0, scale: 0.97 }}
                 transition={spring}
               >
-                <DishCard dish={d} spice={spice[d.id]} onSpice={(level) => onSpice(d.id, level)} />
+                <DishCard dish={d} spice={spice[d.id]} onSpice={(level) => onSpice(d.id, level)} onSides={onSides} />
               </motion.li>
             ))}
           </AnimatePresence>
           {dishes.length === 0 && (
             <motion.li className={styles.empty} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               No {category.title.toLowerCase()} match all of those filters.{' '}
-              <button type="button" className={styles.clear} onClick={onClear}>
+              <button type="button" className={styles.inlineLink} onClick={onClear}>
                 Clear filters
               </button>
             </motion.li>
           )}
         </motion.ul>
       )}
-    </section>
+    </div>
   );
 }
 
@@ -314,11 +262,14 @@ function TagBadge({ tag }: { tag: Tag }) {
   );
 }
 
-function DishCard({ dish, spice, onSpice }: { dish: Dish; spice?: string; onSpice: (level: string) => void }) {
+type DishProps = { dish: Dish; spice?: string; onSpice: (level: string) => void; onSides: () => void };
+
+function DishCard({ dish, spice, onSpice, onSides }: DishProps) {
   return (
     <article className={styles.dish}>
       <div className={styles.dishHead}>
         <h4 className={styles.dishName}>{dish.name}</h4>
+        <span className={styles.leader} aria-hidden="true" />
         <span className={styles.price}>{formatPrice(dish.price)}</span>
       </div>
       {(dish.thai || dish.gloss) && (
@@ -339,9 +290,9 @@ function DishCard({ dish, spice, onSpice }: { dish: Dish; spice?: string; onSpic
             <TagBadge key={t} tag={t} />
           ))}
           {dish.noRice && (
-            <a href="#menu-sides" className={styles.noRice}>
-              <Rice /> no rice, add from sides
-            </a>
+            <button type="button" className={styles.noRice} onClick={onSides}>
+              <Rice /> No rice, add from sides
+            </button>
           )}
         </div>
       )}
@@ -370,9 +321,8 @@ function SpicePicker({ dish, value, onChange }: { dish: Dish; value?: string; on
               role="radio"
               aria-checked={on}
               className={styles.spiceChip}
-              data-level={level.chillies}
               onClick={() => onChange(level.id)}
-              whileTap={{ scale: 0.92 }}
+              whileTap={{ scale: 0.93 }}
               transition={spring}
             >
               {on && (
@@ -380,13 +330,11 @@ function SpicePicker({ dish, value, onChange }: { dish: Dish; value?: string; on
               )}
               <span className={styles.spiceText}>
                 {level.label}
-                {level.chillies > 0 && (
-                  <span className={styles.chillies} aria-hidden="true">
-                    {Array.from({ length: level.chillies }, (_, i) => (
-                      <Chilli key={i} />
-                    ))}
-                  </span>
-                )}
+                <span className={styles.chillies} aria-hidden="true">
+                  {Array.from({ length: level.chillies }, (_, i) => (
+                    <Chilli key={i} />
+                  ))}
+                </span>
               </span>
             </motion.button>
           );

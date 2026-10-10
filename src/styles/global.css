@@ -1,28 +1,37 @@
 :root {
-  /* Taken from the restaurant's current site: olive, deep red, terracotta, cream */
+  /* The restaurant's own colours (olive, deep red, terracotta, cream), with brass
+     for Thai lettering and ornament, and a paper tone for the printed menu. */
   --olive: #393d32;
-  --olive-deep: #2f3229;
-  --olive-soft: #42473a;
-  --oxblood: #8b0000;
+  --olive-deep: #2c2f27;
+  --olive-soft: #43483b;
+  --oxblood: #7d0a07;
   --terracotta: #aa3d1d;
   --cream: #f1e3c8;
   --muted: #cfc4ab;
-  --peach: #e5b98f;
+  --gold: #c9a46a;
+  --paper: #f3e9d4;
+  --paper-2: #eadcc0;
+  --ink: #2c2b22;
+  --ink-soft: #5b5444;
+  --gold-ink: #7f5f26;
   --line: rgba(241, 227, 200, 0.16);
   --line-strong: rgba(241, 227, 200, 0.34);
+  --rule-gold: rgba(201, 164, 106, 0.55);
 
   /* Dietary tag colours, light enough to read on olive */
   --tag-v: #b9cf98;
   --tag-gf: #e6c57e;
   --tag-h: #f1a98f;
 
-  --font-head: 'Nunito Sans', 'Sarabun', 'Avenir Next', Avenir, sans-serif;
-  --font-body: 'Nunito Sans', 'Sarabun', Helvetica, Arial, sans-serif;
+  --font-display: 'Fraunces Variable', 'Trirong', Georgia, serif;
+  --font-sans: 'Instrument Sans Variable', 'Trirong', system-ui, sans-serif;
+  --font-thai: 'Trirong', 'Fraunces Variable', serif;
+  --font-thai-art: 'Charmonman', 'Trirong', serif;
 
-  --gutter: clamp(16px, 5vw, 56px);
-  --max: 1200px;
-  --header-h: 64px;
-  --radius: 4px;
+  --gutter: clamp(18px, 5vw, 64px);
+  --max: 1220px;
+  --header-h: 68px;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   color-scheme: dark;
 }
@@ -52,7 +61,7 @@ body {
   overflow-x: clip;
   background: var(--olive);
   color: var(--cream);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 1.0625rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -76,17 +85,22 @@ p {
 h1,
 h2,
 h3 {
-  font-family: var(--font-head);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
 h4 {
-  font-family: var(--font-head);
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-weight: 500;
   line-height: 1.25;
+}
+
+em {
+  font-style: italic;
 }
 
 p {
@@ -110,13 +124,13 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--cream);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: var(--cream);
-  color: var(--olive);
+  background: var(--gold);
+  color: var(--olive-deep);
 }
 
 .visually-hidden {
@@ -140,7 +154,7 @@ button {
   border-radius: 999px;
   background: var(--cream);
   color: var(--olive);
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -157,60 +171,75 @@ button {
 
 .section {
   position: relative;
-  padding-block: clamp(72px, 11vw, 136px);
+  padding-block: clamp(80px, 12vw, 152px);
 }
 
-/* Small spaced capitals above section titles, like their "ABOUT US" */
+/* Small label above titles: a brass rule, then spaced capitals */
 .kicker {
-  display: inline-block;
-  margin-bottom: 14px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.24em;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--gold);
+}
+
+.kicker::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: currentColor;
 }
 
 .section-title {
-  font-size: clamp(2.3rem, 1.3rem + 4.4vw, 4.4rem);
+  font-size: clamp(2.6rem, 1.4rem + 5vw, 5.4rem);
+  font-weight: 350;
 }
 
-.accent {
-  color: var(--peach);
+.section-title em {
+  font-weight: 300;
+  color: var(--gold);
+}
+
+.thai {
+  font-family: var(--font-thai);
 }
 
 .lede {
-  margin-top: 20px;
-  max-width: 38rem;
+  margin-top: 22px;
+  max-width: 36rem;
   color: var(--muted);
   font-size: clamp(1.08rem, 1.02rem + 0.3vw, 1.22rem);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
-/* Buttons: cream pills with spaced capitals, as on their RESERVATION button */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 48px;
+  min-height: 50px;
   padding: 12px 28px;
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;
-  font-family: var(--font-body);
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: 0.8rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   line-height: 1.1;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .btn svg {
@@ -221,21 +250,21 @@ button {
 
 .btn-primary {
   background: var(--cream);
-  color: var(--olive);
+  color: var(--olive-deep);
 }
 
 .btn-primary:hover {
-  background: #fff7e8;
+  background: var(--gold);
 }
 
 .btn-secondary {
-  border-color: var(--cream);
+  border-color: var(--line-strong);
   color: var(--cream);
 }
 
 .btn-secondary:hover {
-  background: var(--cream);
-  color: var(--olive);
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 .btn-quiet {
@@ -250,7 +279,31 @@ button {
 .btn-sm {
   min-height: 40px;
   padding: 8px 20px;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
+}
+
+/* Text link with an arrow that slides on hover */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-gold);
+}
+
+.link-arrow svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.link-arrow:hover svg {
+  transform: translateX(4px);
 }
 
 @media (prefers-reduced-motion: reduce) {

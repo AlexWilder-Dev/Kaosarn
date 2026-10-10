@@ -6,14 +6,14 @@ import { ArrowUpRight, Close, Menu, Phone } from './Icons';
 import styles from './Header.module.css';
 
 export const NAV = [
-  { href: '#story', label: 'Story' },
-  { href: '#menu', label: 'Menu' },
-  { href: '#drinks', label: 'BYOB & bar' },
-  { href: '#groups', label: 'Groups' },
-  { href: '#visit', label: 'Visit' },
+  { href: '#story', label: 'Our story', thai: 'เรื่องราวของเรา' },
+  { href: '#menu', label: 'Menu', thai: 'เมนู' },
+  { href: '#drinks', label: 'BYOB & bar', thai: 'เครื่องดื่ม' },
+  { href: '#groups', label: 'Groups', thai: 'งานเลี้ยง' },
+  { href: '#visit', label: 'Visit', thai: 'ติดต่อเรา' },
 ];
 
-const spring = { type: 'spring', stiffness: 380, damping: 32 } as const;
+const spring = { type: 'spring', stiffness: 260, damping: 30 } as const;
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -47,7 +47,12 @@ export function Header() {
     <>
       <header className={styles.header} data-solid={solid || open}>
         <div className={`wrap ${styles.bar}`}>
-          <a href="#top" className={styles.logo} onClick={() => setOpen(false)}>
+          <a
+            href="#top"
+            className={styles.logo}
+            onClick={() => setOpen(false)}
+            aria-label="Kaosarn Tooting, back to top"
+          >
             <span className={styles.word}>Kaosarn</span>
             <span className={styles.place}>Tooting</span>
           </a>
@@ -93,36 +98,47 @@ export function Header() {
             id="site-menu"
             ref={sheetRef}
             className={styles.sheet}
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={spring}
+            initial={{ clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ clipPath: 'inset(0 0 0% 0)' }}
+            exit={{ clipPath: 'inset(0 0 100% 0)' }}
+            transition={{ type: 'spring', stiffness: 200, damping: 30 }}
           >
             <nav aria-label="Sections">
-              <ul>
+              <ol>
                 {NAV.map((item, i) => (
                   <motion.li
                     key={item.href}
-                    initial={{ opacity: 0, x: -24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ ...spring, delay: 0.04 * i + 0.05 }}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ ...spring, delay: 0.08 + 0.05 * i }}
                   >
                     <a href={item.href} onClick={() => setOpen(false)}>
-                      {item.label}
+                      <span className={styles.num} aria-hidden="true">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className={styles.label}>{item.label}</span>
+                      <span className={styles.thai} lang="th" aria-hidden="true">
+                        {item.thai}
+                      </span>
                     </a>
                   </motion.li>
                 ))}
-              </ul>
+              </ol>
             </nav>
-            <div className={styles.sheetFoot}>
+            <motion.div
+              className={styles.sheetFoot}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35 }}
+            >
               <StatusPill />
-              <a className="btn btn-quiet" href={business.phone.href}>
+              <a className="btn btn-secondary" href={business.phone.href}>
                 <Phone /> {business.phone.display}
               </a>
               <p>
                 {business.address.line1}, {business.address.postcode}
               </p>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

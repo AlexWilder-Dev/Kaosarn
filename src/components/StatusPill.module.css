@@ -6,9 +6,8 @@
   padding: 7px 15px 7px 13px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: rgba(47, 50, 41, 0.72);
   color: var(--cream);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.2;
   white-space: nowrap;
 }
@@ -22,7 +21,7 @@
 }
 
 .pill strong {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .detail {
@@ -31,8 +30,8 @@
 
 .dot {
   position: relative;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--c);
 }
@@ -42,8 +41,8 @@
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 2px solid var(--c);
-  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  border: 1.5px solid var(--c);
+  animation: ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 @keyframes ping {

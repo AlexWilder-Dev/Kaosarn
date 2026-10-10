@@ -28,7 +28,7 @@ export function Visit() {
         <header className={styles.head}>
           <span className="kicker">come say hi</span>
           <h2 id="visit-title" className="section-title">
-            Find <span className="accent">us</span>
+            Find <em>us</em>
           </h2>
         </header>
 

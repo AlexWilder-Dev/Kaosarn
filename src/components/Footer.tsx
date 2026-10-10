@@ -1,6 +1,7 @@
 import { business, mailto } from '../data/business';
 import { NAV } from './Header';
 import { ArrowUpRight } from './Icons';
+import { Ornament } from './Ornament';
 import styles from './Footer.module.css';
 
 export function Footer() {
@@ -8,9 +9,25 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={`wrap ${styles.inner}`}>
         <div className={styles.brand}>
-          <p className={styles.wordmark}>{business.name}</p>
-          <p className={styles.tagline}>{business.tagline.join(' · ')}</p>
+          <img
+            className={styles.mark}
+            src={`${import.meta.env.BASE_URL}icon-192.png`}
+            width="96"
+            height="96"
+            alt="Kaosarn Tooting logo"
+            loading="lazy"
+          />
+          <div>
+            <p className={styles.wordmark}>
+              Kaosarn <em>Tooting</em>
+            </p>
+            <p className={styles.thai} lang="th">
+              ข้าวสาร
+            </p>
+          </div>
         </div>
+        <p className={styles.tagline}>{business.tagline.join(' · ')}</p>
+        <Ornament />
 
         <div className={styles.cols}>
           <div>

@@ -12,8 +12,10 @@
     "deploy": "npm run photos && npm run build && gh-pages -d dist -t"
   },
   "dependencies": {
-    "@fontsource/nunito-sans": "^5.3.0",
-    "@fontsource/sarabun": "^5.3.0",
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource/charmonman": "^5.3.0",
+    "@fontsource/trirong": "^5.3.0",
     "framer-motion": "^14.1.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"

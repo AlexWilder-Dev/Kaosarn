@@ -9,7 +9,7 @@ export function Drinks() {
         <header className={styles.head}>
           <span className="kicker">BYOB &amp; bar</span>
           <h2 id="drinks-title" className="section-title">
-            Bring a bottle. <span className="accent">Or don’t.</span>
+            Bring a bottle. <em>Or don’t.</em>
           </h2>
         </header>
 

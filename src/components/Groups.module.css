@@ -3,115 +3,142 @@
 }
 
 .head {
-  margin-bottom: clamp(32px, 6vw, 56px);
+  margin-bottom: clamp(36px, 6vw, 64px);
 }
 
 .perks {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 24px 0 0;
+  margin: 26px 0 0;
   padding: 0;
   list-style: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
-.perks li {
-  padding: 8px 16px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.perks li:not(:last-child)::after {
+  content: '·';
+  margin: 0 12px;
+  color: var(--gold);
 }
 
 .layout {
   display: grid;
-  gap: 28px;
+  gap: 36px;
   align-items: start;
 }
 
+.photoWrap {
+  position: relative;
+  width: min(100%, 460px);
+  margin-inline: auto;
+}
+
+.photoWrap::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--rule-gold);
+  border-radius: 999px 999px 0 0;
+  pointer-events: none;
+}
+
 .photo {
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius);
+  aspect-ratio: 4 / 5.2;
+  border-radius: 999px 999px 0 0;
 }
 
 .side {
   display: grid;
-  gap: 24px;
+  gap: 28px;
 }
 
 .set {
-  padding: 26px 22px;
+  position: relative;
+  padding: 40px 26px 30px;
   background: var(--oxblood);
+  text-align: center;
+}
+
+.setLotus {
+  width: 44px;
+  margin: 0 auto 14px;
+  color: var(--gold);
 }
 
 .setHead {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 10px;
 }
 
 .setTitle {
-  font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+  font-size: clamp(1.9rem, 1.5rem + 1.6vw, 2.6rem);
+  font-weight: 350;
 }
 
 .setPrice {
-  flex: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: var(--cream);
-  color: var(--oxblood);
-  font-weight: 900;
-  font-size: 1rem;
-  line-height: 1.1;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
-.setPrice span {
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.setPrice em {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--cream);
 }
 
 .setNote {
-  margin-top: 10px;
-  opacity: 0.88;
+  margin-top: 8px;
+  color: var(--muted);
 }
 
 .dishes {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 20px 0 0;
-  padding: 0;
+  justify-content: center;
+  margin: 22px 0 0;
+  padding: 18px 0 0;
   list-style: none;
+  border-top: 1px solid var(--rule-gold);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.9;
 }
 
-.dishes li {
-  padding: 7px 14px;
-  border: 1px solid rgba(241, 227, 200, 0.5);
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.92rem;
+.dishes li:not(:last-child)::after {
+  content: '·';
+  margin: 0 10px;
+  font-style: normal;
+  color: var(--gold);
 }
 
 @media (min-width: 1000px) {
   .layout {
     grid-template-columns: 0.85fr 1fr;
-    gap: 48px;
+    gap: 64px;
   }
 
   .photoWrap {
     position: sticky;
-    top: calc(var(--header-h) + 24px);
+    top: calc(var(--header-h) + 48px);
+    margin: 24px 0 0;
   }
 
   .set {
-    padding: 32px;
+    padding: 44px 40px 36px;
   }
 }
