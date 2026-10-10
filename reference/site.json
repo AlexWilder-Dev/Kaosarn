@@ -1,0 +1,160 @@
+{
+  "styles": [
+    {
+      "style": "Arial, Helvetica, sans-serif | 10px | 400 | normal | rgb(0, 0, 0) | normal | none",
+      "tag": "SCRIPT",
+      "sample": "var bodyCacheable = true;\n    \n    var exclusionReason = {\"s",
+      "count": 33
+    },
+    {
+      "style": "helvetica-w01-roman, helvetica-w02-roman, helvetica-lt-w10-roman, sans-serif | 15px | 400 | normal | rgb(241, 227, 200) | 0.15px | none",
+      "tag": "SPAN",
+      "sample": "Tuesday       12.00(noon) - 3.00pm / 5.30pm - 10.00pm",
+      "count": 7
+    },
+    {
+      "style": "helvetica-w01-roman, sans-serif | 14px | 400 | normal | rgb(241, 227, 200) | normal | none",
+      "tag": "SPAN",
+      "sample": "From Khaosan Road to Kaosan Tooting restaurant​Bangkok’s Kha",
+      "count": 4
+    },
+    {
+      "style": "helvetica-w01-roman, sans-serif | 16px | 400 | normal | rgb(241, 227, 200) | 0.8px | none",
+      "tag": "SPAN",
+      "sample": "Home",
+      "count": 2
+    },
+    {
+      "style": "avenir-lt-w01_35-light1475496, sans-serif | 15px | 400 | normal | rgb(57, 61, 50) | 3.75px | none",
+      "tag": "SPAN",
+      "sample": "RESERVATION",
+      "count": 2
+    },
+    {
+      "style": "helvetica-w01-roman, sans-serif | 15px | 400 | normal | rgb(241, 227, 200) | normal | none",
+      "tag": "A",
+      "sample": "181 Tooting High Street, London, SW17 0SZ",
+      "count": 2
+    },
+    {
+      "style": "helvetica-w01-roman, sans-serif | 16px | 400 | normal | rgb(241, 227, 200) | -0.16px | none",
+      "tag": "A",
+      "sample": "kaosarn@kaosarntooting.co.uk",
+      "count": 2
+    },
+    {
+      "style": "helvetica-w01-bold, sans-serif | 15px | 400 | normal | rgb(241, 227, 200) | -0.6px | none",
+      "tag": "SPAN",
+      "sample": "​​",
+      "count": 2
+    },
+    {
+      "style": "Helvetica, Arial, メイリオ, meiryo, \"ヒラギノ角ゴ pro w3\", \"hiragino kaku gothic pro\", sans-serif | 14px | 400 | normal | rgb(17, 109, 255) | normal | none",
+      "tag": "BUTTON",
+      "sample": "Skip to Main Content",
+      "count": 1
+    },
+    {
+      "style": "avenir-lt-w01_85-heavy1475544, sans-serif | 35px | 400 | normal | rgb(241, 227, 200) | -0.35px | none",
+      "tag": "SPAN",
+      "sample": "Kaosarn Tooting",
+      "count": 1
+    },
+    {
+      "style": "avenir-lt-w01_85-heavy1475544, sans-serif | 40px | 400 | normal | rgb(241, 227, 200) | -1.6px | none",
+      "tag": "SPAN",
+      "sample": "Thai Food\nHome Cooked Good Vibes",
+      "count": 1
+    },
+    {
+      "style": "helvetica-w01-bold, sans-serif | 20px | 400 | normal | rgb(241, 227, 200) | normal | uppercase",
+      "tag": "SPAN",
+      "sample": "About Us",
+      "count": 1
+    },
+    {
+      "style": "helvetica-w01-bold, sans-serif | 20px | 400 | normal | rgb(241, 227, 200) | normal | none",
+      "tag": "SPAN",
+      "sample": "Our Dining Experience",
+      "count": 1
+    },
+    {
+      "style": "helvetica-w01-roman, sans-serif | 16px | 400 | normal | rgb(241, 227, 200) | normal | none",
+      "tag": "H4",
+      "sample": "There are no items to show here yet",
+      "count": 1
+    },
+    {
+      "style": "helvetica-w01-bold, sans-serif | 30px | 400 | normal | rgb(241, 227, 200) | -1.2px | none",
+      "tag": "A",
+      "sample": "Kaosarn Tooting",
+      "count": 1
+    },
+    {
+      "style": "\"din condensed\" | 15px | 400 | normal | rgb(3, 3, 3) | 0.2px | none",
+      "tag": "SPAN",
+      "sample": "​",
+      "count": 1
+    }
+  ],
+  "backgrounds": [
+    [
+      "rgb(57, 61, 50)",
+      9153
+    ],
+    [
+      "rgb(170, 61, 29)",
+      2781
+    ],
+    [
+      "rgb(139, 0, 0)",
+      1440
+    ],
+    [
+      "rgb(241, 227, 200)",
+      481
+    ]
+  ],
+  "fonts": [
+    "avenir-lt-w01_35-light1475496 400 normal",
+    "avenir-lt-w01_85-heavy1475544 400 normal",
+    "helvetica-w01-bold 400 normal",
+    "helvetica-w01-roman 400 normal",
+    "avenir-lt-w01_35-light1475496 400 normal",
+    "avenir-lt-w01_85-heavy1475544 400 normal"
+  ],
+  "images": [
+    {
+      "src": "https://static.wixstatic.com/media/929758_2d35c2f8983546f59793852ee841d32e~mv2.jpg/v1/fill/w_1126,h_590,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_CK_0120.jpg",
+      "alt": "_CK_0120.jpg",
+      "w": 1126,
+      "h": 590
+    },
+    {
+      "src": "https://static.wixstatic.com/media/929758_47f39fc5703f48d1a103134674d47323~mv2.jpeg/v1/fill/w_1280,h_668,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/929758_47f39fc5703f48d1a103134674d47323~mv2.jpeg",
+      "alt": "_CK_0046.jpeg",
+      "w": 1280,
+      "h": 668
+    },
+    {
+      "src": "https://static.wixstatic.com/media/929758_c0e76ce242204245b111f02150dcf2dc~mv2.jpeg/v1/fill/w_1280,h_565,fp_0.88_0.51,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/929758_c0e76ce242204245b111f02150dcf2dc~mv2.jpeg",
+      "alt": "",
+      "w": 1280,
+      "h": 565
+    },
+    {
+      "src": "https://static.wixstatic.com/media/929758_c1482b7a70a74134aa75dd64847c7219~mv2.jpg/v1/fill/w_640,h_660,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/929758_c1482b7a70a74134aa75dd64847c7219~mv2.jpg",
+      "alt": "",
+      "w": 640,
+      "h": 660
+    },
+    {
+      "src": "https://static.wixstatic.com/media/929758_aaace066f52646e99d9fb10dd568e10d~mv2.jpg/v1/fill/w_641,h_660,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/929758_aaace066f52646e99d9fb10dd568e10d~mv2.jpg",
+      "alt": "_221126 Tootingfood0482_edited.jpg",
+      "w": 641,
+      "h": 660
+    }
+  ],
+  "text": "Skip to Main Content\n\nKaosarn Tooting\n\nHome\nReservation\nThai Food\nHome Cooked Good Vibes\nRESERVATION\nABOUT US\n\nFrom Khaosan Road to Kaosan Tooting restaurant​Bangkok’s Khaosan Road is often the first stop for young travellers arriving in Thailand. It’s where they dive into the vibrant energy of the old town, meet fellow explorers, and form lasting connections. It’s also where many experience Thai food and culture for the first time - Flavours thoughtfully adapted to suit Western tastes, while staying true to authentic Thai roots.\n\n Kaosarn restaurant in Tooting brings those travel memories back to life - a place to eat, explore exciting new flavours, socialise, and just have a good time. It’s where great food meets great company, capturing the spirit of Thailand right here in your local neighbourhood. Think relaxed, casual dining with a strong sense of community - just like the streets of Thailand.\n\nOur Dining Experience\n\nWe are a popular choice for large group bookings and birthday celebrations and are well known for our BYOB option. Guests are welcome to bring their own alcohol, and we also offer a fully licensed bar serving draught beers, wines, and spirits on-site. If you choose to bring your own beverages, a small corkage fee applies. \n\n Our tasting set menu for group bookings features a diverse selection of dishes designed for sharing and social dining. It captures the excitement of discovering bold flavours, the enjoyment of good company, and the experience of sharing street-style dishes. It is all about dining, socialising, and creating memorable moments with friends.\n\nThere are no items to show here yet\nKaosarn Tooting\n\n181 Tooting High Street, London, SW17 0SZ\n\nTooting Broadway Underground Station\n\nkaosarn@kaosarntooting.co.uk\n\n0208 672 8811\n\nRESERVATION\n\n \n\nTuesday       12.00(noon) - 3.00pm / 5.30pm - 10.00pm\n\n \n\nWednesday  12.00(noon) - 3.00pm / 5.30pm - 10.00pm\n\n \n\nThursday      12.00(noon) - 3.00pm / 5.30pm - 10.00pm\n\n \n\nFriday           12.00(noon) - 3.00pm / 5.30pm - 10.30pm\n\n \n\nSaturday       12.00(noon) - 3.30pm / 5.30pm - 10.30pm\n\n​​\n\nSunday         12.00(noon) - 3.30pm / 5.30pm - 9.30pm\n\n​\n\n​",
+  "title": "Home | Kaosarn Tooting"
+}
