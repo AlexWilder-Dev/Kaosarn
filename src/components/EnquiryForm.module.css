@@ -1,10 +1,11 @@
 .card {
   position: relative;
-  padding: 22px 18px;
-  border-radius: 26px;
-  border: 2px solid rgba(255, 45, 135, 0.5);
-  background: radial-gradient(80% 40% at 100% 0%, rgba(255, 45, 135, 0.16), transparent 70%), var(--surface);
-  box-shadow: 0 0 40px -16px var(--pink);
+  padding: 24px 18px;
+  border-radius: 28px;
+  background: var(--paper);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    var(--shadow);
 }
 
 .form {
@@ -15,12 +16,11 @@
 
 .title {
   font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.1rem);
-  font-weight: 700;
 }
 
 .intro {
-  margin-top: 4px;
-  color: var(--muted);
+  margin-top: 6px;
+  color: var(--ink-2);
 }
 
 .row {
@@ -42,10 +42,9 @@
 .field label,
 .field legend {
   padding: 0;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--text);
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--ink);
 }
 
 .field legend {
@@ -53,24 +52,24 @@
 }
 
 .optional {
-  color: var(--dim);
+  color: var(--ink-3);
   font-weight: 400;
 }
 
 .field input:not([type='radio']),
 .field textarea {
   width: 100%;
-  min-height: 48px;
-  padding: 11px 14px;
+  min-height: 50px;
+  padding: 12px 14px;
   border: 1.5px solid var(--line-strong);
   border-radius: 12px;
-  background: rgba(17, 10, 11, 0.6);
-  color: var(--text);
+  background: var(--cream);
+  color: var(--ink);
   font-size: 1rem;
   line-height: 1.4;
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color 0.2s ease;
 }
 
 .field textarea {
@@ -79,36 +78,36 @@
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: var(--dim);
+  color: var(--ink-3);
 }
 
 .field input:focus-visible,
 .field textarea:focus-visible {
-  outline: none;
-  border-color: var(--lime);
-  box-shadow:
-    0 0 0 3px rgba(197, 255, 60, 0.2),
-    0 0 18px -4px var(--lime);
+  outline: 3px solid color-mix(in srgb, var(--enamel-blue) 35%, transparent);
+  outline-offset: 0;
+  border-color: var(--enamel-blue);
+  background: var(--paper);
 }
 
 .field input[aria-invalid='true'] {
-  border-color: var(--tail);
+  border-color: var(--chilli);
 }
 
 .field input[type='date'] {
   -webkit-appearance: none;
   appearance: none;
-  color-scheme: dark;
 }
 
 .error {
-  color: #ff8a80;
-  font-size: 0.88rem;
+  color: var(--chilli-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .hint {
-  color: var(--mango);
-  font-size: 0.88rem;
+  color: var(--amber);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .occasions {
@@ -133,38 +132,42 @@
 .occasion span {
   display: inline-flex;
   align-items: center;
-  min-height: 42px;
+  min-height: 44px;
   padding: 0 16px;
   border: 1.5px solid var(--line-strong);
   border-radius: 999px;
-  font-size: 0.95rem;
-  color: var(--muted);
-  transition: all 0.2s ease;
+  background: var(--paper);
+  font-weight: 600;
+  font-size: 0.96rem;
+  color: var(--ink-2);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .occasion input:checked + span {
-  border-color: var(--pink);
-  background: rgba(255, 45, 135, 0.16);
-  color: var(--pink-core);
-  box-shadow: 0 0 16px -4px var(--pink);
+  border-color: var(--chilli);
+  background: var(--chilli);
+  color: #fff;
 }
 
 .occasion input:focus-visible + span {
-  outline: 2px solid var(--lime);
+  outline: 3px solid var(--enamel-blue);
   outline-offset: 2px;
 }
 
 .submit {
   width: 100%;
-  min-height: 54px;
+  min-height: 56px;
   font-size: 1.08rem;
 }
 
 .demo {
-  margin-top: -8px;
+  margin-top: -6px;
   text-align: center;
-  color: var(--dim);
-  font-size: 0.85rem;
+  color: var(--ink-3);
+  font-size: 0.88rem;
 }
 
 /* Success */
@@ -173,9 +176,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   gap: 10px;
   min-height: 360px;
-  justify-content: center;
 }
 
 .success:focus {
@@ -183,27 +186,24 @@
 }
 
 .successKicker {
-  font-family: var(--font-hand);
-  font-size: 1.4rem;
-  color: var(--lime);
-  transform: rotate(-4deg);
+  font-family: var(--font-brush);
+  font-size: 1.6rem;
+  color: var(--leaf);
 }
 
 .successTitle {
   font-size: clamp(2rem, 1.6rem + 2vw, 2.8rem);
-  font-weight: 800;
-  color: var(--pink-core);
-  text-shadow: var(--glow-pink);
+  color: var(--chilli);
 }
 
 .summary {
-  font-family: var(--font-display);
+  font-weight: 700;
   font-size: 1.15rem;
-  color: var(--text);
+  color: var(--ink);
 }
 
 .successNote {
-  color: var(--muted);
+  color: var(--ink-2);
 }
 
 .successActions {
@@ -230,7 +230,7 @@
 
 @media (min-width: 480px) {
   .card {
-    padding: 28px;
+    padding: 30px;
   }
 
   .row {

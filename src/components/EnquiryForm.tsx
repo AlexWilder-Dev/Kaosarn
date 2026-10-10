@@ -225,10 +225,10 @@ function Success({ values, onReset }: { values: Values; onReset: () => void }) {
         <a className="btn btn-primary" href={business.phone.href}>
           <Phone /> Call {business.phone.display}
         </a>
-        <a className="btn btn-lime" href={mailto(`Group enquiry: ${summary}`, body)}>
+        <a className="btn btn-secondary" href={mailto(`Group enquiry: ${summary}`, body)}>
           <Mail /> Email this enquiry
         </a>
-        <button type="button" className="btn btn-ghost" onClick={onReset}>
+        <button type="button" className="btn btn-quiet" onClick={onReset}>
           Start again
         </button>
       </div>
@@ -236,7 +236,7 @@ function Success({ values, onReset }: { values: Values; onReset: () => void }) {
   );
 }
 
-const COLORS = ['var(--pink)', 'var(--lime)', 'var(--mango)'];
+const COLORS = ['var(--chilli)', 'var(--turmeric)', 'var(--lime)'];
 
 function Confetti() {
   return (

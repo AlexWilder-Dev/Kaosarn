@@ -1,8 +1,9 @@
+/* A chilli-red shop front with the sign board hung above it */
 .footer {
   position: relative;
   padding: clamp(64px, 10vw, 110px) 0 calc(28px + env(safe-area-inset-bottom));
-  border-top: 1px solid var(--line);
-  background: radial-gradient(70% 50% at 50% 0%, rgba(255, 45, 135, 0.14), transparent 70%), #0c0708;
+  background: var(--chilli);
+  color: #fff;
   overflow: hidden;
 }
 
@@ -18,39 +19,39 @@
 }
 
 .sign {
-  width: min(100%, 520px);
+  width: min(100%, 500px);
   height: auto;
   margin-inline: auto;
-  overflow: visible;
 }
 
 .tagline {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0 0.6em;
-  margin-top: 6px;
+  gap: 0 0.5em;
+  margin-top: 26px;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--lime-core);
-  text-shadow: var(--glow-lime);
+  font-size: 1.1rem;
+  line-height: 1.4;
 }
 
 .tagline span {
   display: inline-flex;
-  gap: 0.6em;
+  gap: 0.5em;
   white-space: nowrap;
 }
 
 .tagline i {
   font-style: normal;
-  color: var(--mango);
+  color: var(--turmeric);
 }
 
 @media (max-width: 479px) {
+  .tagline {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .tagline i {
     display: none;
   }
@@ -65,27 +66,23 @@
 
 .label {
   margin-bottom: 8px;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim);
+  font-family: var(--font-brush);
+  font-size: 1.35rem;
+  color: var(--turmeric);
 }
 
 .text {
   font-style: normal;
-  color: var(--text);
   line-height: 1.7;
 }
 
 .text a {
-  text-decoration-color: rgba(255, 242, 230, 0.3);
+  text-decoration-color: rgba(255, 255, 255, 0.45);
   text-underline-offset: 4px;
 }
 
 .text a:hover {
-  color: var(--lime-core);
+  text-decoration-color: #fff;
 }
 
 .mail {
@@ -105,23 +102,31 @@
 .links a {
   display: inline-block;
   padding: 4px 0;
-  color: var(--muted);
   text-decoration: none;
+  opacity: 0.9;
 }
 
 .links a:hover {
-  color: var(--text);
+  opacity: 1;
+  text-decoration: underline;
 }
 
 .reserve {
-  margin-top: 40px;
-  min-width: 220px;
+  margin-top: 44px;
+  min-width: 230px;
+  background: var(--turmeric);
+  color: var(--ink);
+  box-shadow: 0 3px 0 var(--turmeric-dark);
+}
+
+.reserve:hover {
+  background: var(--paper);
 }
 
 .legal {
   margin-top: 40px;
-  color: var(--dim);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+  opacity: 0.85;
 }
 
 @media (min-width: 760px) {

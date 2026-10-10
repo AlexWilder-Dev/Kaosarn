@@ -1,17 +1,17 @@
 {
   "hero": {
-    "width": 1417,
-    "height": 997,
-    "color": "rgb(8, 8, 8)",
+    "width": 1365,
+    "height": 2048,
+    "color": "rgb(216, 200, 184)",
     "widths": [
       480,
       960,
-      1417
+      1365
     ]
   },
   "story": {
     "width": 1417,
-    "height": 974,
+    "height": 997,
     "color": "rgb(8, 8, 8)",
     "widths": [
       480,
@@ -30,22 +30,22 @@
     ]
   },
   "visit": {
+    "width": 1417,
+    "height": 974,
+    "color": "rgb(8, 8, 8)",
+    "widths": [
+      480,
+      960,
+      1417
+    ]
+  },
+  "menu": {
     "width": 787,
     "height": 1181,
     "color": "rgb(56, 8, 8)",
     "widths": [
       480,
       787
-    ]
-  },
-  "menu": {
-    "width": 1365,
-    "height": 2048,
-    "color": "rgb(216, 200, 184)",
-    "widths": [
-      480,
-      960,
-      1365
     ]
   }
 }

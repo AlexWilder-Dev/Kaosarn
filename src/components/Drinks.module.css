@@ -1,5 +1,7 @@
 .drinks {
   overflow: hidden;
+  background: var(--paper);
+  border-block: 1px solid var(--line);
 }
 
 .head {
@@ -9,64 +11,33 @@
 .panels {
   position: relative;
   display: grid;
-  gap: 18px;
-  perspective: 1000px;
+  gap: 16px;
 }
 
 .panel {
-  --c: var(--lime);
-  --core: var(--lime-core);
-  --glow: var(--glow-lime);
+  --c: var(--leaf);
+  --tint: var(--lime-tint);
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 2px solid color-mix(in srgb, var(--c) 50%, transparent);
-  border-radius: 26px;
-  background:
-    radial-gradient(90% 60% at 50% 0%, color-mix(in srgb, var(--c) 16%, transparent), transparent 70%), var(--surface);
-  box-shadow:
-    0 0 40px -14px var(--c),
-    inset 0 0 40px -24px var(--c);
+  padding: 26px 24px 28px;
+  border-radius: 28px;
+  background: var(--tint);
   overflow: hidden;
-  transform-style: preserve-3d;
 }
 
-.panel[data-tone='pink'] {
-  --c: var(--pink);
-  --core: var(--pink-core);
-  --glow: var(--glow-pink);
+.panel[data-tone='bar'] {
+  --c: var(--chilli);
+  --tint: var(--chilli-tint);
 }
 
-.top {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 24px 24px 0;
-}
-
+/* Big painted lettering, like a hand-painted shop-front board */
 .sign {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(3.6rem, 2.8rem + 5vw, 6rem);
-  line-height: 0.9;
-  letter-spacing: 0.04em;
-  color: var(--core);
-  text-shadow: var(--glow);
-}
-
-.art {
-  flex: none;
-  width: clamp(92px, 24vw, 140px);
+  font-size: clamp(4rem, 3rem + 6vw, 6.6rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
   color: var(--c);
-  filter: drop-shadow(0 0 6px var(--c)) drop-shadow(0 0 18px color-mix(in srgb, var(--c) 60%, transparent));
-}
-
-.art svg {
-  width: 100%;
-  height: auto;
-  overflow: visible;
 }
 
 .body {
@@ -74,28 +45,28 @@
   flex-direction: column;
   flex: 1;
   gap: 12px;
-  padding: 18px 24px 26px;
+  margin-top: 18px;
 }
 
 .body h3 {
-  font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.2rem);
-  font-weight: 700;
+  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.2rem);
+  color: var(--ink);
 }
 
 .body p {
-  color: var(--muted);
-  font-size: 1.05rem;
+  color: var(--ink-2);
+  font-size: 1.08rem;
 }
 
 .note {
   align-self: flex-start;
   margin-top: auto;
-  padding: 6px 14px 7px;
+  padding: 6px 16px 8px;
   border-radius: 8px;
-  background: var(--lime);
-  color: #18200a !important;
-  font-family: var(--font-hand);
-  font-size: 1.05rem !important;
+  background: var(--turmeric);
+  color: var(--ink) !important;
+  font-family: var(--font-brush);
+  font-size: 1.2rem !important;
   transform: rotate(-2deg);
 }
 
@@ -109,13 +80,11 @@
 }
 
 .list li {
-  padding: 6px 14px;
-  border: 1px solid color-mix(in srgb, var(--pink) 55%, transparent);
+  padding: 7px 16px;
   border-radius: 999px;
-  background: rgba(255, 45, 135, 0.08);
-  font-family: var(--font-display);
-  font-weight: 500;
-  color: var(--pink-core);
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .or {
@@ -127,71 +96,13 @@
   margin: -34px 0;
   z-index: 2;
   border-radius: 50%;
-  background: var(--mango);
-  color: var(--night);
-  font-family: var(--font-hand);
-  font-size: 1.6rem;
+  background: var(--turmeric);
+  color: var(--ink);
+  font-family: var(--font-brush);
+  font-size: 1.7rem;
   line-height: 1;
-  transform: rotate(-10deg);
-  box-shadow:
-    0 0 0 6px var(--night),
-    0 0 30px rgba(255, 171, 43, 0.6);
-}
-
-.bottle {
-  transform-origin: 61px 46px;
-  animation: wobble 4s ease-in-out infinite;
-}
-
-@keyframes wobble {
-  0%,
-  70%,
-  100% {
-    transform: rotate(0);
-  }
-  76% {
-    transform: rotate(-8deg);
-  }
-  84% {
-    transform: rotate(6deg);
-  }
-  92% {
-    transform: rotate(-3deg);
-  }
-}
-
-.bubbles circle {
-  animation: bubble 2.6s ease-in infinite;
-}
-
-.bubbles circle:nth-child(2) {
-  animation-delay: -0.6s;
-}
-
-.bubbles circle:nth-child(3) {
-  animation-delay: -1.2s;
-}
-
-.bubbles circle:nth-child(4) {
-  animation-delay: -1.8s;
-}
-
-.bubbles circle:nth-child(5) {
-  animation-delay: -2.2s;
-}
-
-@keyframes bubble {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-62px);
-    opacity: 0;
-  }
+  transform: rotate(-8deg);
+  box-shadow: 0 0 0 6px var(--paper);
 }
 
 @media (min-width: 800px) {
@@ -201,15 +112,12 @@
     gap: 0;
   }
 
+  .panel {
+    padding: 36px 48px 40px;
+  }
+
   .or {
     align-self: center;
     margin: 0 -32px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bubbles circle {
-    animation: none;
-    opacity: 0.8;
   }
 }

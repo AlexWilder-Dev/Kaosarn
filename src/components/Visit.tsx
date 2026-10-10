@@ -28,7 +28,7 @@ export function Visit() {
         <header className={styles.head}>
           <span className="kicker">come say hi</span>
           <h2 id="visit-title" className="section-title">
-            Find <span className="neon-lime">us</span>
+            Find <span className="accent">us</span>
           </h2>
         </header>
 
@@ -49,10 +49,10 @@ export function Visit() {
                 <Pin /> Get directions
                 <span className="visually-hidden">(opens Google Maps in a new tab)</span>
               </a>
-              <a className="btn btn-lime" href={business.phone.href}>
+              <a className="btn btn-secondary" href={business.phone.href}>
                 <Phone /> {business.phone.display}
               </a>
-              <a className={`btn btn-ghost ${styles.email}`} href={mailto()}>
+              <a className={`btn btn-quiet ${styles.email}`} href={mailto()}>
                 <Mail /> <span className={styles.emailText}>{business.email}</span>
               </a>
             </div>
@@ -109,8 +109,8 @@ export function Visit() {
             <motion.div className={styles.photoWrap} {...reveal(0.15)}>
               <Photo
                 slot="visit"
-                alt="At Kaosarn Tooting"
-                sizes="(min-width: 900px) 540px, 92vw"
+                alt="A corner of the dining room: plank walls, garlands and a green tufted banquette"
+                sizes="(min-width: 900px) 560px, 92vw"
                 className={styles.photo}
               />
             </motion.div>

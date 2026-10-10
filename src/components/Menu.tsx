@@ -35,7 +35,7 @@ export function Menu() {
         <div className={styles.introHead}>
           <span className="kicker">the main event</span>
           <h2 id="menu-title" className="section-title">
-            The <span className="neon-mango">Menu</span>
+            The <span className="accent">Menu</span>
           </h2>
         </div>
 
@@ -43,8 +43,8 @@ export function Menu() {
           <div className={styles.introPhoto}>
             <Photo
               slot="menu"
-              alt="A dish from the Kaosarn Tooting kitchen"
-              sizes="(min-width: 900px) 360px, 120px"
+              alt="A sharing spread from above: satay, spring rolls, papaya salad, larb, curry and more"
+              sizes="(min-width: 900px) 380px, 92vw"
               className={styles.photo}
             />
             <span className={styles.photoTag}>fresh from the wok</span>

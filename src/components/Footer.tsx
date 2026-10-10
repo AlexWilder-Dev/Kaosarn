@@ -1,20 +1,20 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { business, mailto } from '../data/business';
-import { NeonSign } from './NeonSign';
+import { PaintedSign } from './PaintedSign';
 import { NAV } from './Header';
 import { ArrowUpRight } from './Icons';
 import styles from './Footer.module.css';
 
 export function Footer() {
   const signRef = useRef<HTMLDivElement>(null);
-  const lit = useInView(signRef, { once: true, margin: '0px 0px -20% 0px' });
+  const seen = useInView(signRef, { once: true, margin: '0px 0px -15% 0px' });
 
   return (
     <footer className={styles.footer}>
       <div className={`wrap ${styles.inner}`}>
         <div ref={signRef} className={styles.signBox}>
-          <NeonSign play={lit} className={styles.sign} label="Kaosarn Tooting" />
+          <PaintedSign play={seen} className={styles.sign} label="Kaosarn Tooting" />
           <p className={styles.tagline}>
             {business.tagline.map((word, i) => (
               <span key={word}>
@@ -56,12 +56,7 @@ export function Footer() {
           </div>
         </div>
 
-        <a
-          className={`btn btn-primary ${styles.reserve}`}
-          href={business.reserveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className={`btn ${styles.reserve}`} href={business.reserveUrl} target="_blank" rel="noopener noreferrer">
           Reserve a table <ArrowUpRight />
           <span className="visually-hidden">(opens TheFork in a new tab)</span>
         </a>

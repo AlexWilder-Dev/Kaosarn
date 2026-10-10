@@ -116,7 +116,7 @@ export function Header() {
             </nav>
             <div className={styles.sheetFoot}>
               <StatusPill />
-              <a className="btn btn-ghost" href={business.phone.href}>
+              <a className="btn btn-quiet" href={business.phone.href}>
                 <Phone /> {business.phone.display}
               </a>
               <p>

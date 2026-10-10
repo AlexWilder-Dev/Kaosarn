@@ -1,7 +1,6 @@
 .visit {
-  background:
-    radial-gradient(60% 40% at 100% 20%, rgba(197, 255, 60, 0.08), transparent 70%),
-    linear-gradient(180deg, transparent, var(--night-2));
+  background: var(--paper);
+  border-top: 1px solid var(--line);
 }
 
 .head {
@@ -15,22 +14,24 @@
   align-items: start;
 }
 
+.where {
+  grid-area: where;
+}
+
 .address {
   display: block;
   font-style: normal;
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 1.15rem + 1.4vw, 2rem);
-  font-weight: 500;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
   line-height: 1.3;
 }
 
 .name {
   display: block;
-  margin-bottom: 4px;
-  font-family: var(--font-hand);
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--mango);
+  margin-bottom: 6px;
+  font-family: var(--font-brush);
+  font-size: 1.35rem;
+  color: var(--chilli);
 }
 
 .tube {
@@ -38,21 +39,21 @@
   align-items: center;
   gap: 10px;
   margin-top: 14px;
-  color: var(--muted);
+  color: var(--ink-2);
 }
 
 .tube svg {
   flex: none;
   width: 22px;
   height: 22px;
-  color: var(--lime);
+  color: var(--leaf);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 24px;
+  margin-top: 26px;
 }
 
 .email {
@@ -64,31 +65,23 @@
   text-overflow: ellipsis;
 }
 
-.where {
-  grid-area: where;
-}
-
-.hours {
-  grid-area: hours;
-}
-
 .photoWrap {
   grid-area: photo;
 }
 
 .photo {
-  aspect-ratio: 4 / 5;
-  max-height: min(70vh, 560px);
+  aspect-ratio: 3 / 2;
   border-radius: var(--radius);
-  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
 }
 
-/* Hours board */
+/* Hours board: a painted shop-hours sign */
 .hours {
+  grid-area: hours;
   padding: 22px 18px;
-  border: 1px solid var(--line-strong);
-  border-radius: 26px;
-  background: var(--surface);
+  border-radius: 28px;
+  background: var(--cream);
+  box-shadow: inset 0 0 0 1px var(--line);
 }
 
 .hoursHead {
@@ -101,8 +94,7 @@
 }
 
 .hoursHead h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.6rem;
 }
 
 .table {
@@ -119,15 +111,14 @@
 
 .table th {
   text-align: left;
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 700;
   white-space: nowrap;
 }
 
 .table td {
   text-align: right;
   font-variant-numeric: tabular-nums;
-  color: var(--muted);
+  color: var(--ink-2);
 }
 
 .table tr > :first-child {
@@ -139,12 +130,12 @@
 }
 
 .table tr[data-today='true'] > * {
-  background: rgba(197, 255, 60, 0.1);
-  color: var(--text);
+  background: var(--turmeric-tint);
+  color: var(--ink);
 }
 
 .table tr[data-today='true'] > :first-child {
-  box-shadow: inset 3px 0 0 var(--lime);
+  box-shadow: inset 4px 0 0 var(--turmeric);
 }
 
 .dayShort {
@@ -154,10 +145,10 @@
 .todayTag {
   display: inline-block;
   margin-left: 8px;
-  padding: 1px 8px 2px;
+  padding: 1px 9px 2px;
   border-radius: 999px;
-  background: var(--lime);
-  color: var(--night);
+  background: var(--chilli);
+  color: #fff;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -171,15 +162,14 @@
 }
 
 .closed {
-  color: var(--pink-hot);
-  font-family: var(--font-display);
-  font-weight: 500;
+  color: var(--chilli);
+  font-weight: 700;
 }
 
 .hoursNote {
   margin-top: 10px;
-  color: var(--dim);
-  font-size: 0.88rem;
+  color: var(--ink-3);
+  font-size: 0.92rem;
 }
 
 .reserve {
@@ -204,11 +194,11 @@
 
   .session + .session::before {
     content: ' · ';
-    color: var(--dim);
+    color: var(--ink-3);
   }
 
   .hours {
-    padding: 28px;
+    padding: 30px;
   }
 }
 
@@ -217,6 +207,6 @@
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 'where hours' 'photo hours';
     grid-template-rows: auto 1fr;
-    gap: 40px 48px;
+    gap: 40px 56px;
   }
 }

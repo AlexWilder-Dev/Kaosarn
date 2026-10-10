@@ -1,19 +1,17 @@
 .story {
   overflow: hidden;
-  background:
-    radial-gradient(60% 40% at 0% 10%, rgba(255, 171, 43, 0.1), transparent 70%),
-    radial-gradient(60% 40% at 100% 90%, rgba(255, 45, 135, 0.12), transparent 70%);
+  background: var(--paper);
+  border-block: 1px solid var(--line);
 }
 
 .watermark {
   position: absolute;
-  top: 6%;
+  top: 5%;
   right: -4vw;
   font-family: var(--font-display);
-  font-weight: 800;
   font-size: clamp(7rem, 30vw, 22rem);
   line-height: 1;
-  color: rgba(255, 242, 230, 0.03);
+  color: rgba(43, 27, 18, 0.035);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -26,8 +24,7 @@
 
 .arrow {
   display: inline-block;
-  color: var(--mango);
-  text-shadow: var(--glow-mango);
+  color: var(--turmeric-dark);
 }
 
 .track {
@@ -43,28 +40,21 @@
 }
 
 .planned,
-.glow,
-.lit {
+.road {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .planned {
-  stroke: rgba(255, 242, 230, 0.22);
+  stroke: rgba(43, 27, 18, 0.22);
   stroke-width: 3;
   stroke-dasharray: 0.1 11;
 }
 
-.glow {
-  stroke: var(--pink);
-  stroke-width: 8;
-  opacity: 0.9;
-}
-
-.lit {
-  stroke: var(--pink-core);
-  stroke-width: 3;
+.road {
+  stroke: var(--chilli);
+  stroke-width: 4;
 }
 
 .tuk {
@@ -75,15 +65,7 @@
   height: 45px;
   margin: -22px 0 0 -15px;
   z-index: 2;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
-}
-
-.tuk svg {
-  overflow: visible;
-}
-
-.tail {
-  filter: drop-shadow(0 0 3px var(--tail)) drop-shadow(0 0 6px var(--tail));
+  filter: drop-shadow(0 3px 3px rgba(43, 27, 18, 0.3));
 }
 
 .beats {
@@ -107,20 +89,16 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 3px solid rgba(255, 242, 230, 0.3);
-  background: var(--night);
+  border: 3px solid rgba(43, 27, 18, 0.3);
+  background: var(--paper);
   transition:
     border-color 0.4s ease,
-    box-shadow 0.4s ease,
     background-color 0.4s ease;
 }
 
 .beat[data-reached='true'] .marker {
-  border-color: var(--lime);
-  background: var(--lime-core);
-  box-shadow:
-    0 0 0 4px rgba(197, 255, 60, 0.15),
-    0 0 18px var(--lime);
+  border-color: var(--chilli);
+  background: var(--turmeric);
 }
 
 .card {
@@ -139,7 +117,7 @@
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
-  color: var(--dim);
+  color: var(--ink-3);
 }
 
 /* Bangkok street sign: blue enamel, white Thai over roman text */
@@ -153,20 +131,19 @@
   outline: 3px solid #13429a;
   background: #13429a;
   color: #fff;
-  font-family: var(--font-display);
   line-height: 1.15;
   transform: rotate(-2deg);
-  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow);
 }
 
 .bkk span:first-child {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
 }
 
 .bkk span:last-child {
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.04em;
 }
 
@@ -180,13 +157,12 @@
   border-radius: 6px;
   background: #fbfaf6;
   color: #161616;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.2rem);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.15rem);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transform: rotate(1.5deg);
-  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow);
 }
 
 .district {
@@ -194,31 +170,21 @@
 }
 
 .beatTitle {
-  font-size: clamp(1.7rem, 1.2rem + 2.4vw, 2.8rem);
-  font-weight: 700;
+  font-size: clamp(1.7rem, 1.2rem + 2.2vw, 2.6rem);
 }
 
 .beatBody {
   margin-top: 12px;
-  color: var(--muted);
-  font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.18rem);
-}
-
-.polaroid {
-  margin-top: 26px;
-  padding: 10px 10px 34px;
-  max-width: 420px;
-  background: #f6efe6;
-  border-radius: 4px;
-  transform: rotate(-2.5deg);
-  box-shadow:
-    0 30px 50px -24px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(0, 0, 0, 0.2);
+  color: var(--ink-2);
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
 }
 
 .photo {
+  margin-top: 26px;
   aspect-ratio: 4 / 3;
-  border-radius: 2px;
+  max-width: 560px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 @media (min-width: 900px) {
@@ -244,7 +210,7 @@
     align-items: flex-end;
   }
 
-  .beat:nth-child(odd) .polaroid {
+  .beat:nth-child(odd) .photo {
     margin-left: auto;
   }
 

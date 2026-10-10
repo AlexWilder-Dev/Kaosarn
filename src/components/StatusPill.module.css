@@ -1,36 +1,35 @@
 .pill {
-  --c: var(--lime);
+  --c: var(--leaf);
+  --bg: var(--lime-tint);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 7px 14px 7px 12px;
-  border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
   border-radius: 999px;
-  background: rgba(17, 10, 11, 0.62);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  font-size: 0.9rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 0.95rem;
   line-height: 1.2;
   white-space: nowrap;
-  box-shadow: 0 0 18px -4px color-mix(in srgb, var(--c) 60%, transparent);
 }
 
 .pill[data-kind='later'] {
-  --c: var(--mango);
+  --c: var(--amber);
+  --bg: var(--turmeric-tint);
 }
 
 .pill[data-kind='closed'] {
-  --c: var(--pink);
+  --c: var(--chilli);
+  --bg: var(--chilli-tint);
 }
 
 .pill strong {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--text);
+  font-weight: 700;
+  color: var(--c);
 }
 
 .detail {
-  color: var(--muted);
+  color: var(--ink-2);
 }
 
 .dot {
@@ -39,7 +38,6 @@
   height: 9px;
   border-radius: 50%;
   background: var(--c);
-  box-shadow: 0 0 8px var(--c);
 }
 
 .pill[data-kind='open'] .dot::after {
@@ -48,13 +46,13 @@
   inset: -4px;
   border-radius: 50%;
   border: 2px solid var(--c);
-  animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 @keyframes ping {
   0% {
     transform: scale(0.6);
-    opacity: 0.9;
+    opacity: 0.8;
   }
   100% {
     transform: scale(1.8);

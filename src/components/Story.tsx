@@ -124,21 +124,15 @@ export function Story() {
         <header className={styles.head}>
           <span className="kicker">the story</span>
           <h2 id="story-title" className="section-title">
-            Khaosan Road <span className={styles.arrow}>→</span> <span className="neon-pink">Tooting</span>
+            Khaosan Road <span className={styles.arrow}>→</span> <span className="accent">Tooting</span>
           </h2>
         </header>
 
         <div ref={trackRef} className={styles.track}>
           {geo && (
             <svg className={styles.route} width={geo.width} height={geo.height} aria-hidden="true">
-              <defs>
-                <filter id="route-glow" x="-20%" y="-5%" width="140%" height="110%">
-                  <feGaussianBlur stdDeviation="4" />
-                </filter>
-              </defs>
               <path ref={routeRef} d={geo.d} className={styles.planned} />
-              <motion.path d={geo.d} className={styles.glow} style={{ pathLength: drawn }} filter="url(#route-glow)" />
-              <motion.path d={geo.d} className={styles.lit} style={{ pathLength: drawn }} />
+              <motion.path d={geo.d} className={styles.road} style={{ pathLength: drawn }} />
             </svg>
           )}
 
@@ -169,14 +163,13 @@ export function Story() {
                   <h3 className={styles.beatTitle}>{beat.title}</h3>
                   <p className={styles.beatBody}>{beat.body}</p>
                   {beat.photo && hasPhoto('story') && (
-                    <div className={styles.polaroid}>
-                      <Photo
-                        slot="story"
-                        alt="At Kaosarn Tooting"
-                        sizes="(min-width: 900px) 420px, 80vw"
-                        className={styles.photo}
-                      />
-                    </div>
+                    <Photo
+                      slot="story"
+                      alt="The dining room, hung with garlands under the restaurant's red Thai name sign"
+                      sizes="(min-width: 900px) 520px, 90vw"
+                      focus="62% 50%"
+                      className={styles.photo}
+                    />
                   )}
                 </motion.div>
               </li>
@@ -211,15 +204,13 @@ function Sign({ sign }: { sign: StreetSign }) {
 function TukTuk() {
   return (
     <svg viewBox="0 0 32 48" width="30" height="45">
-      <rect x="1.5" y="31" width="5" height="10" rx="2" fill="#0b0607" />
-      <rect x="25.5" y="31" width="5" height="10" rx="2" fill="#0b0607" />
-      <rect x="13.5" y="1" width="5" height="9" rx="2" fill="#0b0607" />
-      <path d="M10 9Q16 4 22 9L27 39Q16 44 5 39Z" fill="var(--mango)" />
-      <rect x="6.5" y="15" width="19" height="24" rx="5" fill="var(--pink)" />
-      <path d="M9 21h14M9 27h14M9 33h14" stroke="rgba(255,255,255,.35)" strokeWidth="1.5" />
-      <circle cx="16" cy="8.5" r="1.8" fill="#fff6d8" />
-      <rect className={styles.tail} x="6" y="40.5" width="5" height="3" rx="1.2" fill="var(--tail)" />
-      <rect className={styles.tail} x="21" y="40.5" width="5" height="3" rx="1.2" fill="var(--tail)" />
+      <rect x="1.5" y="31" width="5" height="10" rx="2" fill="var(--ink)" />
+      <rect x="25.5" y="31" width="5" height="10" rx="2" fill="var(--ink)" />
+      <rect x="13.5" y="1" width="5" height="9" rx="2" fill="var(--ink)" />
+      <path d="M10 9Q16 4 22 9L27 39Q16 44 5 39Z" fill="var(--turmeric)" />
+      <rect x="6.5" y="15" width="19" height="24" rx="5" fill="var(--chilli)" />
+      <path d="M9 21h14M9 27h14M9 33h14" stroke="rgba(255,255,255,.4)" strokeWidth="1.5" />
+      <circle cx="16" cy="8.5" r="1.8" fill="var(--paper)" />
     </svg>
   );
 }
