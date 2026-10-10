@@ -32,14 +32,15 @@ so every build has them.
 
 ## Deploy to GitHub Pages
 
-```bash
-npm run deploy
-```
+Every push to `main` (or the current working branch) deploys automatically through
+`.github/workflows/deploy.yml`, with **Settings → Pages → Source** set to **GitHub Actions**. The workflow
+fetches the photos, builds and publishes. It can also be run by hand from the Actions tab.
 
-This fetches any missing photos, builds, and publishes `dist/` to the `gh-pages` branch. The first time,
-open the repo's **Settings → Pages** and set the source to **Deploy from a branch → `gh-pages` / root**.
 The site is served from `https://<user>.github.io/Kaosarn/`. If the repo is renamed, update `base` in
 `vite.config.ts` to match.
+
+To publish from your own machine instead, run `npm run deploy` and set the Pages source to
+**Deploy from a branch → `gh-pages` / root**.
 
 ## Editing content
 
