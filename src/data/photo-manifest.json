@@ -1,1 +1,51 @@
-{}
+{
+  "hero": {
+    "width": 1417,
+    "height": 997,
+    "color": "rgb(8, 8, 8)",
+    "widths": [
+      480,
+      960,
+      1417
+    ]
+  },
+  "story": {
+    "width": 1417,
+    "height": 974,
+    "color": "rgb(8, 8, 8)",
+    "widths": [
+      480,
+      960,
+      1417
+    ]
+  },
+  "groups": {
+    "width": 1417,
+    "height": 945,
+    "color": "rgb(8, 8, 8)",
+    "widths": [
+      480,
+      960,
+      1417
+    ]
+  },
+  "visit": {
+    "width": 787,
+    "height": 1181,
+    "color": "rgb(56, 8, 8)",
+    "widths": [
+      480,
+      787
+    ]
+  },
+  "menu": {
+    "width": 1365,
+    "height": 2048,
+    "color": "rgb(216, 200, 184)",
+    "widths": [
+      480,
+      960,
+      1365
+    ]
+  }
+}
