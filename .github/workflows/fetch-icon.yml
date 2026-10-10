@@ -1,0 +1,37 @@
+name: Fetch site icon
+
+# One-off: downloads the browser-tab icons declared by www.kaosarntooting.co.uk
+# and commits them to reference/icons/ so the demo can reuse their own icon.
+on:
+  push:
+    paths: ['.github/workflows/fetch-icon.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Fetch icons
+        run: |
+          mkdir -p reference/icons
+          curl -sSL -A "Mozilla/5.0" https://www.kaosarntooting.co.uk/ -o page.html
+          grep -oiE '<link[^>]+rel="[^"]*(icon|apple-touch-icon)[^"]*"[^>]*>' page.html | tee reference/icons/links.txt
+          i=0
+          for href in $(grep -oiE 'href="[^"]+"' reference/icons/links.txt | sed -E 's/href="([^"]+)"/\1/' | sed 's/&amp;/\&/g'); do
+            case "$href" in http*) url="$href";; //*) url="https:$href";; *) url="https://www.kaosarntooting.co.uk/${href#/}";; esac
+            i=$((i+1))
+            curl -sSL -A "Mozilla/5.0" "$url" -o "reference/icons/icon-$i" && file "reference/icons/icon-$i" | tee -a reference/icons/links.txt
+            echo "$url" >> reference/icons/links.txt
+          done
+          curl -sSL -A "Mozilla/5.0" https://www.kaosarntooting.co.uk/favicon.ico -o reference/icons/favicon.ico && file reference/icons/favicon.ico | tee -a reference/icons/links.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reference
+          git commit -m "Fetch the current site's icons for reference" || echo "Nothing new to commit"
+          git push
