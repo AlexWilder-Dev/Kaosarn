@@ -1,0 +1,267 @@
+.story {
+  overflow: hidden;
+  background:
+    radial-gradient(60% 40% at 0% 10%, rgba(255, 171, 43, 0.1), transparent 70%),
+    radial-gradient(60% 40% at 100% 90%, rgba(255, 45, 135, 0.12), transparent 70%);
+}
+
+.watermark {
+  position: absolute;
+  top: 6%;
+  right: -4vw;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(7rem, 30vw, 22rem);
+  line-height: 1;
+  color: rgba(255, 242, 230, 0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.head {
+  position: relative;
+  margin-bottom: clamp(40px, 8vw, 80px);
+}
+
+.arrow {
+  display: inline-block;
+  color: var(--mango);
+  text-shadow: var(--glow-mango);
+}
+
+.track {
+  position: relative;
+}
+
+.route {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.planned,
+.glow,
+.lit {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.planned {
+  stroke: rgba(255, 242, 230, 0.22);
+  stroke-width: 3;
+  stroke-dasharray: 0.1 11;
+}
+
+.glow {
+  stroke: var(--pink);
+  stroke-width: 8;
+  opacity: 0.9;
+}
+
+.lit {
+  stroke: var(--pink-core);
+  stroke-width: 3;
+}
+
+.tuk {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 45px;
+  margin: -22px 0 0 -15px;
+  z-index: 2;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+}
+
+.tuk svg {
+  overflow: visible;
+}
+
+.tail {
+  filter: drop-shadow(0 0 3px var(--tail)) drop-shadow(0 0 6px var(--tail));
+}
+
+.beats {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(64px, 12vw, 120px);
+  margin: 0;
+  padding: 24px 0 48px 56px;
+  list-style: none;
+}
+
+.beat {
+  position: relative;
+}
+
+.marker {
+  position: absolute;
+  top: 4px;
+  left: -45px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 242, 230, 0.3);
+  background: var(--night);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background-color 0.4s ease;
+}
+
+.beat[data-reached='true'] .marker {
+  border-color: var(--lime);
+  background: var(--lime-core);
+  box-shadow:
+    0 0 0 4px rgba(197, 255, 60, 0.15),
+    0 0 18px var(--lime);
+}
+
+.card {
+  max-width: 34rem;
+}
+
+.signWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.coord {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+
+/* Bangkok street sign: blue enamel, white Thai over roman text */
+.bkk {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 20px 9px;
+  border: 3px solid #f4f1ea;
+  border-radius: 8px;
+  outline: 3px solid #13429a;
+  background: #13429a;
+  color: #fff;
+  font-family: var(--font-display);
+  line-height: 1.15;
+  transform: rotate(-2deg);
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.8);
+}
+
+.bkk span:first-child {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.bkk span:last-child {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* London nameplate: white, black border, red postal district */
+.ldn {
+  display: inline-block;
+  padding: 7px 16px 8px;
+  border: 3px solid #fbfaf6;
+  outline: 2px solid #161616;
+  outline-offset: -7px;
+  border-radius: 6px;
+  background: #fbfaf6;
+  color: #161616;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.2rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transform: rotate(1.5deg);
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.8);
+}
+
+.district {
+  color: #d3222a;
+}
+
+.beatTitle {
+  font-size: clamp(1.7rem, 1.2rem + 2.4vw, 2.8rem);
+  font-weight: 700;
+}
+
+.beatBody {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.18rem);
+}
+
+.polaroid {
+  margin-top: 26px;
+  padding: 10px 10px 34px;
+  max-width: 420px;
+  background: #f6efe6;
+  border-radius: 4px;
+  transform: rotate(-2.5deg);
+  box-shadow:
+    0 30px 50px -24px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.photo {
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+}
+
+@media (min-width: 900px) {
+  .beats {
+    padding-left: 0;
+    gap: 40px;
+  }
+
+  .beat {
+    width: calc(50% - 70px);
+  }
+
+  .beat:nth-child(odd) {
+    margin-right: auto;
+    text-align: right;
+  }
+
+  .beat:nth-child(odd) .card {
+    margin-left: auto;
+  }
+
+  .beat:nth-child(odd) .signWrap {
+    align-items: flex-end;
+  }
+
+  .beat:nth-child(odd) .polaroid {
+    margin-left: auto;
+  }
+
+  .beat:nth-child(even) {
+    margin-left: auto;
+  }
+
+  .beat:nth-child(odd) .marker {
+    left: auto;
+    right: -79px;
+  }
+
+  .beat:nth-child(even) .marker {
+    left: -79px;
+  }
+
+  .beat + .beat {
+    margin-top: -20px;
+  }
+}

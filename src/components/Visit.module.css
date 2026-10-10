@@ -1,0 +1,222 @@
+.visit {
+  background:
+    radial-gradient(60% 40% at 100% 20%, rgba(197, 255, 60, 0.08), transparent 70%),
+    linear-gradient(180deg, transparent, var(--night-2));
+}
+
+.head {
+  margin-bottom: clamp(32px, 6vw, 56px);
+}
+
+.grid {
+  display: grid;
+  grid-template-areas: 'where' 'hours' 'photo';
+  gap: 28px;
+  align-items: start;
+}
+
+.address {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1.15rem + 1.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.name {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--mango);
+}
+
+.tube {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+.tube svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--lime);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.email {
+  max-width: 100%;
+}
+
+.emailText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.where {
+  grid-area: where;
+}
+
+.hours {
+  grid-area: hours;
+}
+
+.photoWrap {
+  grid-area: photo;
+}
+
+.photo {
+  aspect-ratio: 4 / 5;
+  max-height: min(70vh, 560px);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+/* Hours board */
+.hours {
+  padding: 22px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 26px;
+  background: var(--surface);
+}
+
+.hoursHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.hoursHead h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+
+.table th,
+.table td {
+  padding: 10px 12px;
+  vertical-align: top;
+}
+
+.table th {
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.table td {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.table tr > :first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+.table tr > :last-child {
+  border-radius: 0 12px 12px 0;
+}
+
+.table tr[data-today='true'] > * {
+  background: rgba(197, 255, 60, 0.1);
+  color: var(--text);
+}
+
+.table tr[data-today='true'] > :first-child {
+  box-shadow: inset 3px 0 0 var(--lime);
+}
+
+.dayShort {
+  display: none;
+}
+
+.todayTag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px 2px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--night);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: 2px;
+}
+
+.session {
+  display: block;
+  white-space: nowrap;
+}
+
+.closed {
+  color: var(--pink-hot);
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.hoursNote {
+  margin-top: 10px;
+  color: var(--dim);
+  font-size: 0.88rem;
+}
+
+.reserve {
+  width: 100%;
+  margin-top: 18px;
+}
+
+@media (max-width: 380px) {
+  .dayLong {
+    display: none;
+  }
+
+  .dayShort {
+    display: inline;
+  }
+}
+
+@media (min-width: 560px) {
+  .session {
+    display: inline;
+  }
+
+  .session + .session::before {
+    content: ' · ';
+    color: var(--dim);
+  }
+
+  .hours {
+    padding: 28px;
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'where hours' 'photo hours';
+    grid-template-rows: auto 1fr;
+    gap: 40px 48px;
+  }
+}

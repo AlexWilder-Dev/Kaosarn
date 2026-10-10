@@ -1,0 +1,324 @@
+:root {
+  /* Khaosan Road after dark: warm night base, neon on top */
+  --night: #110a0b;
+  --night-2: #180e10;
+  --surface: #211316;
+  --surface-2: #2b191d;
+  --surface-3: #372127;
+  --line: rgba(255, 226, 205, 0.12);
+  --line-strong: rgba(255, 226, 205, 0.24);
+
+  --text: #fff2e6;
+  --muted: #d4b9aa;
+  --dim: #9c8073;
+
+  --pink: #ff2d87;
+  --pink-hot: #ff5aa5;
+  --pink-core: #ffe0ee;
+  --lime: #c5ff3c;
+  --lime-core: #f2ffd6;
+  --mango: #ffab2b;
+  --mango-core: #fff0d4;
+  --tail: #ff3a2f;
+
+  --font-display: 'Kanit', system-ui, sans-serif;
+  --font-body: 'Bai Jamjuree', system-ui, sans-serif;
+  --font-hand: 'Sriracha', 'Bai Jamjuree', cursive;
+
+  --gutter: clamp(16px, 5vw, 56px);
+  --max: 1180px;
+  --header-h: 60px;
+  --radius: 18px;
+  --radius-sm: 12px;
+
+  --glow-pink: 0 0 1px #fff, 0 0 6px var(--pink), 0 0 16px var(--pink), 0 0 34px rgba(255, 45, 135, 0.55);
+  --glow-lime: 0 0 1px #fff, 0 0 6px var(--lime), 0 0 16px rgba(197, 255, 60, 0.75), 0 0 32px rgba(197, 255, 60, 0.4);
+  --glow-mango: 0 0 1px #fff, 0 0 6px var(--mango), 0 0 16px rgba(255, 171, 43, 0.8), 0 0 32px rgba(255, 171, 43, 0.4);
+
+  color-scheme: dark;
+}
+
+@media (min-width: 900px) {
+  :root {
+    --header-h: 72px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+  scroll-padding-top: var(--header-h);
+  background: var(--night);
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--night);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Film grain over everything, very faint. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .9 0 0 0 0 .8 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--pink);
+  color: #fff;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--night);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(72px, 12vw, 140px);
+}
+
+/* Small hand-painted label above section titles */
+.kicker {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.4rem);
+  line-height: 1.2;
+  color: var(--mango);
+  transform: rotate(-3deg);
+  transform-origin: left center;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: clamp(2.4rem, 1.4rem + 5vw, 5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  margin-top: 16px;
+  max-width: 38rem;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+}
+
+.neon-pink {
+  color: var(--pink-core);
+  text-shadow: var(--glow-pink);
+}
+
+.neon-lime {
+  color: var(--lime-core);
+  text-shadow: var(--glow-lime);
+}
+
+.neon-mango {
+  color: var(--mango-core);
+  text-shadow: var(--glow-mango);
+}
+
+.thai {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+/* Buttons */
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--text);
+  --btn-border: var(--line-strong);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 2px solid var(--btn-border);
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btn svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+.btn-primary {
+  --btn-bg: var(--pink);
+  --btn-fg: #fff;
+  --btn-border: var(--pink);
+  box-shadow:
+    0 0 0 0 rgba(255, 45, 135, 0),
+    0 8px 30px -8px rgba(255, 45, 135, 0.7);
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 0 22px 2px rgba(255, 45, 135, 0.55),
+    0 8px 30px -8px rgba(255, 45, 135, 0.9);
+}
+
+.btn-lime {
+  --btn-border: var(--lime);
+  --btn-fg: var(--lime-core);
+  box-shadow:
+    inset 0 0 12px rgba(197, 255, 60, 0.18),
+    0 0 14px rgba(197, 255, 60, 0.18);
+}
+
+.btn-lime:hover {
+  --btn-bg: rgba(197, 255, 60, 0.1);
+  box-shadow:
+    inset 0 0 14px rgba(197, 255, 60, 0.3),
+    0 0 22px rgba(197, 255, 60, 0.35);
+}
+
+.btn-ghost:hover {
+  --btn-border: var(--text);
+  --btn-bg: rgba(255, 242, 230, 0.06);
+}
+
+.btn-sm {
+  min-height: 40px;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Tilted banners poke past the viewport edge; clip them here. */
+.band-clip {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  padding-block: 18px;
+  margin-block: -18px;
+}

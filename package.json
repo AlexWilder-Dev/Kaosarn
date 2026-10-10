@@ -1,0 +1,31 @@
+{
+  "name": "kaosarn-tooting",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "photos": "node scripts/fetch-photos.mjs",
+    "deploy": "npm run photos && npm run build && gh-pages -d dist -t"
+  },
+  "dependencies": {
+    "@fontsource/bai-jamjuree": "^5.3.0",
+    "@fontsource/kanit": "^5.3.0",
+    "@fontsource/sriracha": "^5.3.0",
+    "framer-motion": "^14.1.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "gh-pages": "^6.3.0",
+    "sharp": "^0.35.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  }
+}

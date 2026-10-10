@@ -1,0 +1,131 @@
+.footer {
+  position: relative;
+  padding: clamp(64px, 10vw, 110px) 0 calc(28px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: radial-gradient(70% 50% at 50% 0%, rgba(255, 45, 135, 0.14), transparent 70%), #0c0708;
+  overflow: hidden;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.signBox {
+  width: 100%;
+}
+
+.sign {
+  width: min(100%, 520px);
+  height: auto;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+.tagline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.6em;
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lime-core);
+  text-shadow: var(--glow-lime);
+}
+
+.tagline span {
+  display: inline-flex;
+  gap: 0.6em;
+  white-space: nowrap;
+}
+
+.tagline i {
+  font-style: normal;
+  color: var(--mango);
+}
+
+@media (max-width: 479px) {
+  .tagline i {
+    display: none;
+  }
+}
+
+.cols {
+  display: grid;
+  gap: 28px;
+  width: 100%;
+  margin-top: 48px;
+}
+
+.label {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.text {
+  font-style: normal;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.text a {
+  text-decoration-color: rgba(255, 242, 230, 0.3);
+  text-underline-offset: 4px;
+}
+
+.text a:hover {
+  color: var(--lime-core);
+}
+
+.mail {
+  overflow-wrap: anywhere;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links a {
+  display: inline-block;
+  padding: 4px 0;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: var(--text);
+}
+
+.reserve {
+  margin-top: 40px;
+  min-width: 220px;
+}
+
+.legal {
+  margin-top: 40px;
+  color: var(--dim);
+  font-size: 0.85rem;
+}
+
+@media (min-width: 760px) {
+  .cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
