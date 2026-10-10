@@ -1,17 +1,17 @@
 .story {
   overflow: hidden;
-  background: var(--paper);
-  border-block: 1px solid var(--line);
+  background: var(--oxblood);
 }
 
 .watermark {
   position: absolute;
   top: 5%;
   right: -4vw;
-  font-family: var(--font-display);
+  font-family: var(--font-head);
+  font-weight: 900;
   font-size: clamp(7rem, 30vw, 22rem);
   line-height: 1;
-  color: rgba(43, 27, 18, 0.035);
+  color: rgba(241, 227, 200, 0.05);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -24,7 +24,7 @@
 
 .arrow {
   display: inline-block;
-  color: var(--turmeric-dark);
+  color: var(--peach);
 }
 
 .track {
@@ -47,13 +47,13 @@
 }
 
 .planned {
-  stroke: rgba(43, 27, 18, 0.22);
+  stroke: rgba(241, 227, 200, 0.35);
   stroke-width: 3;
   stroke-dasharray: 0.1 11;
 }
 
 .road {
-  stroke: var(--chilli);
+  stroke: var(--cream);
   stroke-width: 4;
 }
 
@@ -65,7 +65,7 @@
   height: 45px;
   margin: -22px 0 0 -15px;
   z-index: 2;
-  filter: drop-shadow(0 3px 3px rgba(43, 27, 18, 0.3));
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
 }
 
 .beats {
@@ -89,16 +89,16 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 3px solid rgba(43, 27, 18, 0.3);
-  background: var(--paper);
+  border: 3px solid rgba(241, 227, 200, 0.45);
+  background: var(--oxblood);
   transition:
     border-color 0.4s ease,
     background-color 0.4s ease;
 }
 
 .beat[data-reached='true'] .marker {
-  border-color: var(--chilli);
-  background: var(--turmeric);
+  border-color: var(--cream);
+  background: var(--cream);
 }
 
 .card {
@@ -117,7 +117,7 @@
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
-  color: var(--ink-3);
+  color: var(--muted);
 }
 
 /* Bangkok street sign: blue enamel, white Thai over roman text */
@@ -133,11 +133,10 @@
   color: #fff;
   line-height: 1.15;
   transform: rotate(-2deg);
-  box-shadow: var(--shadow);
 }
 
 .bkk span:first-child {
-  font-family: var(--font-display);
+  font-weight: 700;
   font-size: 1.4rem;
 }
 
@@ -162,7 +161,6 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transform: rotate(1.5deg);
-  box-shadow: var(--shadow);
 }
 
 .district {
@@ -175,7 +173,8 @@
 
 .beatBody {
   margin-top: 12px;
-  color: var(--ink-2);
+  color: var(--cream);
+  opacity: 0.88;
   font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
 }
 
@@ -184,7 +183,6 @@
   aspect-ratio: 4 / 3;
   max-width: 560px;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 
 @media (min-width: 900px) {

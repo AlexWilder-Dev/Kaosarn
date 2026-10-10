@@ -1,11 +1,8 @@
 .card {
   position: relative;
-  padding: 24px 18px;
-  border-radius: 28px;
-  background: var(--paper);
-  box-shadow:
-    inset 0 0 0 1px var(--line),
-    var(--shadow);
+  padding: 26px 20px;
+  background: var(--olive-soft);
+  border: 1px solid var(--line);
 }
 
 .form {
@@ -20,7 +17,7 @@
 
 .intro {
   margin-top: 6px;
-  color: var(--ink-2);
+  color: var(--muted);
 }
 
 .row {
@@ -42,18 +39,21 @@
 .field label,
 .field legend {
   padding: 0;
-  font-weight: 700;
-  font-size: 0.98rem;
-  color: var(--ink);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
 }
 
 .field legend {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .optional {
-  color: var(--ink-3);
-  font-weight: 400;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.1em;
 }
 
 .field input:not([type='radio']),
@@ -61,15 +61,13 @@
   width: 100%;
   min-height: 50px;
   padding: 12px 14px;
-  border: 1.5px solid var(--line-strong);
-  border-radius: 12px;
-  background: var(--cream);
-  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  background: var(--olive-deep);
+  color: var(--cream);
   font-size: 1rem;
   line-height: 1.4;
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 .field textarea {
@@ -78,19 +76,18 @@
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: var(--ink-3);
+  color: rgba(207, 196, 171, 0.7);
 }
 
 .field input:focus-visible,
 .field textarea:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--enamel-blue) 35%, transparent);
+  outline: 2px solid var(--cream);
   outline-offset: 0;
-  border-color: var(--enamel-blue);
-  background: var(--paper);
+  border-color: var(--cream);
 }
 
 .field input[aria-invalid='true'] {
-  border-color: var(--chilli);
+  border-color: var(--tag-h);
 }
 
 .field input[type='date'] {
@@ -99,15 +96,15 @@
 }
 
 .error {
-  color: var(--chilli-dark);
-  font-size: 0.9rem;
-  font-weight: 600;
+  color: var(--tag-h);
+  font-size: 0.92rem;
+  font-weight: 700;
 }
 
 .hint {
-  color: var(--amber);
-  font-size: 0.9rem;
-  font-weight: 600;
+  color: var(--tag-gf);
+  font-size: 0.92rem;
+  font-weight: 700;
 }
 
 .occasions {
@@ -133,13 +130,12 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 0 16px;
-  border: 1.5px solid var(--line-strong);
+  padding: 0 18px;
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: var(--paper);
-  font-weight: 600;
-  font-size: 0.96rem;
-  color: var(--ink-2);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--cream);
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -147,26 +143,25 @@
 }
 
 .occasion input:checked + span {
-  border-color: var(--chilli);
-  background: var(--chilli);
-  color: #fff;
+  border-color: var(--cream);
+  background: var(--cream);
+  color: var(--olive);
 }
 
 .occasion input:focus-visible + span {
-  outline: 3px solid var(--enamel-blue);
-  outline-offset: 2px;
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
 }
 
 .submit {
   width: 100%;
-  min-height: 56px;
-  font-size: 1.08rem;
+  min-height: 54px;
 }
 
 .demo {
   margin-top: -6px;
   text-align: center;
-  color: var(--ink-3);
+  color: var(--muted);
   font-size: 0.88rem;
 }
 
@@ -186,24 +181,24 @@
 }
 
 .successKicker {
-  font-family: var(--font-brush);
-  font-size: 1.6rem;
-  color: var(--leaf);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--peach);
 }
 
 .successTitle {
   font-size: clamp(2rem, 1.6rem + 2vw, 2.8rem);
-  color: var(--chilli);
 }
 
 .summary {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.15rem;
-  color: var(--ink);
 }
 
 .successNote {
-  color: var(--ink-2);
+  color: var(--muted);
 }
 
 .successActions {
@@ -230,7 +225,7 @@
 
 @media (min-width: 480px) {
   .card {
-    padding: 30px;
+    padding: 32px;
   }
 
   .row {

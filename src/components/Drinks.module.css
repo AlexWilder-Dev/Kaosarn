@@ -1,7 +1,6 @@
 .drinks {
   overflow: hidden;
-  background: var(--paper);
-  border-block: 1px solid var(--line);
+  background: var(--oxblood);
 }
 
 .head {
@@ -15,29 +14,24 @@
 }
 
 .panel {
-  --c: var(--leaf);
-  --tint: var(--lime-tint);
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 26px 24px 28px;
-  border-radius: 28px;
-  background: var(--tint);
-  overflow: hidden;
+  padding: 28px 24px 30px;
+  border: 1px solid var(--line-strong);
 }
 
 .panel[data-tone='bar'] {
-  --c: var(--chilli);
-  --tint: var(--chilli-tint);
+  background: rgba(0, 0, 0, 0.12);
 }
 
-/* Big painted lettering, like a hand-painted shop-front board */
 .sign {
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 3rem + 6vw, 6.6rem);
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: clamp(3.6rem, 2.6rem + 6vw, 6.4rem);
   line-height: 0.95;
-  letter-spacing: 0.02em;
-  color: var(--c);
+  letter-spacing: -0.03em;
+  color: var(--cream);
 }
 
 .body {
@@ -49,25 +43,26 @@
 }
 
 .body h3 {
-  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.2rem);
-  color: var(--ink);
+  font-size: clamp(1.5rem, 1.25rem + 1.2vw, 2rem);
 }
 
 .body p {
-  color: var(--ink-2);
-  font-size: 1.08rem;
+  color: var(--cream);
+  opacity: 0.88;
+  font-size: 1.06rem;
 }
 
 .note {
   align-self: flex-start;
   margin-top: auto;
-  padding: 6px 16px 8px;
-  border-radius: 8px;
-  background: var(--turmeric);
-  color: var(--ink) !important;
-  font-family: var(--font-brush);
-  font-size: 1.2rem !important;
-  transform: rotate(-2deg);
+  padding: 8px 16px;
+  border: 1.5px solid var(--cream);
+  border-radius: 999px;
+  opacity: 1 !important;
+  font-size: 0.74rem !important;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .list {
@@ -80,29 +75,31 @@
 }
 
 .list li {
-  padding: 7px 16px;
+  padding: 8px 16px;
   border-radius: 999px;
-  background: var(--paper);
-  color: var(--ink);
-  font-weight: 600;
+  background: var(--cream);
+  color: var(--oxblood);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .or {
   justify-self: center;
   display: grid;
   place-items: center;
-  width: 64px;
-  height: 64px;
-  margin: -34px 0;
+  width: 56px;
+  height: 56px;
+  margin: -30px 0;
   z-index: 2;
   border-radius: 50%;
-  background: var(--turmeric);
-  color: var(--ink);
-  font-family: var(--font-brush);
-  font-size: 1.7rem;
-  line-height: 1;
-  transform: rotate(-8deg);
-  box-shadow: 0 0 0 6px var(--paper);
+  background: var(--cream);
+  color: var(--oxblood);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 @media (min-width: 800px) {
@@ -113,11 +110,11 @@
   }
 
   .panel {
-    padding: 36px 48px 40px;
+    padding: 40px 52px 44px;
   }
 
   .or {
     align-self: center;
-    margin: 0 -32px;
+    margin: 0 -28px;
   }
 }

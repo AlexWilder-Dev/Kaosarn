@@ -25,11 +25,11 @@ const LIVE_SITE = 'https://www.kaosarntooting.co.uk/';
 
 // Which photo fills which slot on the page. Swap ids here and re-run with --force.
 const PHOTOS = [
-  { slot: 'hero', id: '929758_aaace066f52646e99d9fb10dd568e10d~mv2.jpg' }, // salads on enamel plates
-  { slot: 'story', id: '929758_2d35c2f8983546f59793852ee841d32e~mv2.jpg' }, // dining room, Thai name sign
-  { slot: 'groups', id: '929758_c0e76ce242204245b111f02150dcf2dc~mv2.jpeg' }, // main room, open kitchen
-  { slot: 'visit', id: '929758_47f39fc5703f48d1a103134674d47323~mv2.jpeg' }, // banquette corner
-  { slot: 'menu', id: '929758_c1482b7a70a74134aa75dd64847c7219~mv2.jpg' }, // sharing spread (787px wide)
+  { slot: 'hero', id: '929758_2d35c2f8983546f59793852ee841d32e~mv2.jpg' }, // dining room, Thai name sign (their hero)
+  { slot: 'story', id: '929758_47f39fc5703f48d1a103134674d47323~mv2.jpeg' }, // banquette corner
+  { slot: 'menu', id: '929758_aaace066f52646e99d9fb10dd568e10d~mv2.jpg' }, // salads on enamel plates
+  { slot: 'groups', id: '929758_c1482b7a70a74134aa75dd64847c7219~mv2.jpg' }, // sharing spread (787px wide)
+  { slot: 'visit', id: '929758_c0e76ce242204245b111f02150dcf2dc~mv2.jpeg' }, // main room, open kitchen
 ];
 
 const WIDTHS = [480, 960, 1600, 2400];

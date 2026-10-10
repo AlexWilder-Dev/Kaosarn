@@ -1,35 +1,32 @@
 .pill {
-  --c: var(--leaf);
-  --bg: var(--lime-tint);
+  --c: var(--tag-v);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 14px 7px 12px;
+  padding: 7px 15px 7px 13px;
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: var(--bg);
-  color: var(--ink);
-  font-size: 0.95rem;
+  background: rgba(47, 50, 41, 0.72);
+  color: var(--cream);
+  font-size: 0.92rem;
   line-height: 1.2;
   white-space: nowrap;
 }
 
 .pill[data-kind='later'] {
-  --c: var(--amber);
-  --bg: var(--turmeric-tint);
+  --c: var(--tag-gf);
 }
 
 .pill[data-kind='closed'] {
-  --c: var(--chilli);
-  --bg: var(--chilli-tint);
+  --c: var(--tag-h);
 }
 
 .pill strong {
-  font-weight: 700;
-  color: var(--c);
+  font-weight: 800;
 }
 
 .detail {
-  color: var(--ink-2);
+  color: var(--muted);
 }
 
 .dot {

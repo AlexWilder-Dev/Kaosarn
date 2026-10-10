@@ -2,16 +2,12 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
+  background: var(--olive);
   border-bottom: 1px solid transparent;
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 .header[data-solid='true'] {
-  background: rgba(251, 243, 228, 0.94);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
   border-bottom-color: var(--line);
 }
 
@@ -26,24 +22,15 @@
 .logo {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 0.28em;
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
   text-decoration: none;
   white-space: nowrap;
-}
-
-.word {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  color: var(--chilli);
-}
-
-.place {
-  font-family: var(--font-brush);
-  font-size: 1.15rem;
-  line-height: 1;
-  color: var(--leaf);
+  color: var(--cream);
 }
 
 .nav {
@@ -65,7 +52,7 @@
   border: 0;
   border-radius: 50%;
   background: transparent;
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .toggle svg {
@@ -83,7 +70,7 @@
   gap: 32px;
   padding: 28px var(--gutter) calc(32px + env(safe-area-inset-bottom));
   overflow-y: auto;
-  background: var(--cream);
+  background: var(--olive);
 }
 
 .sheet ul {
@@ -98,17 +85,19 @@
 
 .sheet li a {
   display: block;
-  padding: 12px 0;
-  font-family: var(--font-display);
+  padding: 14px 0;
+  font-family: var(--font-head);
+  font-weight: 900;
   font-size: clamp(1.8rem, 8vw, 2.6rem);
-  line-height: 1.15;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   text-decoration: none;
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .sheet li a:hover,
 .sheet li a:focus-visible {
-  color: var(--chilli);
+  color: var(--peach);
 }
 
 .sheetFoot {
@@ -116,33 +105,35 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
-  color: var(--ink-2);
+  color: var(--muted);
 }
 
-@media (max-width: 399px) {
+@media (max-width: 359px) {
   .place {
     display: none;
   }
 }
 
 @media (min-width: 900px) {
-  .word {
-    font-size: 1.65rem;
+  .logo {
+    font-size: 1.85rem;
   }
 
   .nav {
     display: flex;
-    gap: clamp(18px, 2.4vw, 34px);
+    gap: clamp(20px, 2.6vw, 40px);
   }
 
   .nav a {
     position: relative;
     padding: 6px 0;
     font-weight: 600;
-    font-size: 1rem;
-    color: var(--ink-2);
+    font-size: 0.98rem;
+    letter-spacing: 0.04em;
+    color: var(--cream);
     text-decoration: none;
-    transition: color 0.2s ease;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
   }
 
   .nav a::after {
@@ -151,16 +142,15 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 3px;
-    border-radius: 3px;
-    background: var(--turmeric);
+    height: 1.5px;
+    background: var(--cream);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s ease;
   }
 
   .nav a:hover {
-    color: var(--ink);
+    opacity: 1;
   }
 
   .nav a:hover::after {

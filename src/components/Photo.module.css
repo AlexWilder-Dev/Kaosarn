@@ -1,7 +1,7 @@
 .frame {
   position: relative;
   overflow: hidden;
-  background: var(--cream-2);
+  background: var(--olive-deep);
 }
 
 .img {

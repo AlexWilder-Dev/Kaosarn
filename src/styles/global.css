@@ -1,43 +1,35 @@
 :root {
-  /* Bangkok street food in daylight: warm cream, enamel white, chilli, turmeric, lime */
-  --cream: #fbf3e4;
-  --cream-2: #f6e9d1;
-  --paper: #fffdf8;
-  --ink: #2b1b12;
-  --ink-2: #5c4536;
-  --ink-3: #7a6352;
-  --line: rgba(43, 27, 18, 0.12);
-  --line-strong: rgba(43, 27, 18, 0.26);
+  /* Taken from the restaurant's current site: olive, deep red, terracotta, cream */
+  --olive: #393d32;
+  --olive-deep: #2f3229;
+  --olive-soft: #42473a;
+  --oxblood: #8b0000;
+  --terracotta: #aa3d1d;
+  --cream: #f1e3c8;
+  --muted: #cfc4ab;
+  --peach: #e5b98f;
+  --line: rgba(241, 227, 200, 0.16);
+  --line-strong: rgba(241, 227, 200, 0.34);
 
-  --chilli: #c8321e;
-  --chilli-dark: #a12415;
-  --chilli-tint: #fbe3dc;
-  --turmeric: #f2b226;
-  --turmeric-dark: #c98a00;
-  --amber: #8a5a00; /* turmeric dark enough for text */
-  --turmeric-tint: #fcebc0;
-  --lime: #93bf3a;
-  --leaf: #3d7a25;
-  --lime-tint: #e8f2d2;
-  --enamel-blue: #2856a3;
+  /* Dietary tag colours, light enough to read on olive */
+  --tag-v: #b9cf98;
+  --tag-gf: #e6c57e;
+  --tag-h: #f1a98f;
 
-  --font-display: 'Chonburi', Georgia, serif;
-  --font-brush: 'Pattaya', 'Chonburi', cursive;
-  --font-body: 'Sarabun', system-ui, sans-serif;
+  --font-head: 'Nunito Sans', 'Sarabun', 'Avenir Next', Avenir, sans-serif;
+  --font-body: 'Nunito Sans', 'Sarabun', Helvetica, Arial, sans-serif;
 
   --gutter: clamp(16px, 5vw, 56px);
   --max: 1200px;
   --header-h: 64px;
-  --radius: 20px;
-  --radius-sm: 12px;
-  --shadow: 0 1px 2px rgba(43, 27, 18, 0.06), 0 12px 32px -18px rgba(43, 27, 18, 0.35);
+  --radius: 4px;
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 @media (min-width: 900px) {
   :root {
-    --header-h: 76px;
+    --header-h: 84px;
   }
 }
 
@@ -52,17 +44,17 @@ html {
   text-size-adjust: 100%;
   overflow-x: clip;
   scroll-padding-top: var(--header-h);
-  background: var(--cream);
+  background: var(--olive);
 }
 
 body {
   margin: 0;
   overflow-x: clip;
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--olive);
+  color: var(--cream);
   font-family: var(--font-body);
   font-size: 1.0625rem;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -84,15 +76,16 @@ p {
 h1,
 h2,
 h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.1;
+  font-family: var(--font-head);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
 h4 {
-  font-family: var(--font-body);
-  font-weight: 700;
+  font-family: var(--font-head);
+  font-weight: 800;
   line-height: 1.25;
 }
 
@@ -117,14 +110,13 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid var(--enamel-blue);
+  outline: 2px solid var(--cream);
   outline-offset: 3px;
-  border-radius: 6px;
 }
 
 ::selection {
-  background: var(--turmeric);
-  color: var(--ink);
+  background: var(--cream);
+  color: var(--olive);
 }
 
 .visually-hidden {
@@ -146,8 +138,8 @@ button {
   z-index: 200;
   padding: 10px 16px;
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--olive);
   font-weight: 700;
   text-decoration: none;
 }
@@ -168,47 +160,50 @@ button {
   padding-block: clamp(72px, 11vw, 136px);
 }
 
-/* Brush-lettered label above section titles */
+/* Small spaced capitals above section titles, like their "ABOUT US" */
 .kicker {
   display: inline-block;
-  margin-bottom: 8px;
-  font-family: var(--font-brush);
-  font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.65rem);
-  line-height: 1.2;
-  color: var(--chilli);
+  margin-bottom: 14px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .section-title {
-  font-size: clamp(2.3rem, 1.3rem + 4.4vw, 4.6rem);
-  letter-spacing: -0.01em;
+  font-size: clamp(2.3rem, 1.3rem + 4.4vw, 4.4rem);
 }
 
 .accent {
-  color: var(--chilli);
+  color: var(--peach);
 }
 
 .lede {
-  margin-top: 18px;
-  max-width: 36rem;
-  color: var(--ink-2);
-  font-size: clamp(1.1rem, 1.04rem + 0.3vw, 1.25rem);
-  line-height: 1.55;
+  margin-top: 20px;
+  max-width: 38rem;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 1.02rem + 0.3vw, 1.22rem);
+  line-height: 1.65;
 }
 
-/* Buttons: flat painted colour with a solid "sign-board" edge */
+/* Buttons: cream pills with spaced capitals, as on their RESERVATION button */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 50px;
-  padding: 12px 24px;
-  border: 2px solid transparent;
+  min-height: 48px;
+  padding: 12px 28px;
+  border: 1.5px solid transparent;
   border-radius: 999px;
+  background: transparent;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 1.02rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
   line-height: 1.1;
+  text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
@@ -220,43 +215,42 @@ button {
 
 .btn svg {
   flex: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .btn-primary {
-  background: var(--chilli);
-  color: #fff;
-  box-shadow: 0 3px 0 var(--chilli-dark);
+  background: var(--cream);
+  color: var(--olive);
 }
 
 .btn-primary:hover {
-  background: var(--chilli-dark);
+  background: #fff7e8;
 }
 
 .btn-secondary {
-  border-color: var(--ink);
-  color: var(--ink);
+  border-color: var(--cream);
+  color: var(--cream);
 }
 
 .btn-secondary:hover {
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--olive);
 }
 
 .btn-quiet {
   border-color: var(--line-strong);
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .btn-quiet:hover {
-  border-color: var(--ink);
+  border-color: var(--cream);
 }
 
 .btn-sm {
-  min-height: 42px;
-  padding: 8px 18px;
-  font-size: 0.95rem;
+  min-height: 40px;
+  padding: 8px 20px;
+  font-size: 0.74rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

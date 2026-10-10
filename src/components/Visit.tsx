@@ -109,7 +109,7 @@ export function Visit() {
             <motion.div className={styles.photoWrap} {...reveal(0.15)}>
               <Photo
                 slot="visit"
-                alt="A corner of the dining room: plank walls, garlands and a green tufted banquette"
+                alt="The main dining room with tables laid, and the open kitchen pass at the back"
                 sizes="(min-width: 900px) 560px, 92vw"
                 className={styles.photo}
               />

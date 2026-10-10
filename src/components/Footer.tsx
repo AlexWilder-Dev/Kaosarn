@@ -1,28 +1,15 @@
-import { useRef } from 'react';
-import { useInView } from 'framer-motion';
 import { business, mailto } from '../data/business';
-import { PaintedSign } from './PaintedSign';
 import { NAV } from './Header';
 import { ArrowUpRight } from './Icons';
 import styles from './Footer.module.css';
 
 export function Footer() {
-  const signRef = useRef<HTMLDivElement>(null);
-  const seen = useInView(signRef, { once: true, margin: '0px 0px -15% 0px' });
-
   return (
     <footer className={styles.footer}>
       <div className={`wrap ${styles.inner}`}>
-        <div ref={signRef} className={styles.signBox}>
-          <PaintedSign play={seen} className={styles.sign} label="Kaosarn Tooting" />
-          <p className={styles.tagline}>
-            {business.tagline.map((word, i) => (
-              <span key={word}>
-                {i > 0 && <i aria-hidden="true">·</i>}
-                {word}
-              </span>
-            ))}
-          </p>
+        <div className={styles.brand}>
+          <p className={styles.wordmark}>{business.name}</p>
+          <p className={styles.tagline}>{business.tagline.join(' · ')}</p>
         </div>
 
         <div className={styles.cols}>
@@ -32,6 +19,8 @@ export function Footer() {
               {business.address.line1}
               <br />
               {business.address.city} {business.address.postcode}
+              <br />
+              {business.nearby}
             </address>
           </div>
           <div>
@@ -56,14 +45,15 @@ export function Footer() {
           </div>
         </div>
 
-        <a className={`btn ${styles.reserve}`} href={business.reserveUrl} target="_blank" rel="noopener noreferrer">
-          Reserve a table <ArrowUpRight />
-          <span className="visually-hidden">(opens TheFork in a new tab)</span>
-        </a>
-
-        <p className={styles.legal}>
-          © {new Date().getFullYear()} {business.name} · <span lang="th">ขอบคุณ</span> · see you soon
-        </p>
+        <div className={styles.bottom}>
+          <a className="btn btn-primary" href={business.reserveUrl} target="_blank" rel="noopener noreferrer">
+            Reservation <ArrowUpRight />
+            <span className="visually-hidden">(opens TheFork in a new tab)</span>
+          </a>
+          <p className={styles.legal}>
+            © {new Date().getFullYear()} {business.name} · <span lang="th">ขอบคุณ</span>
+          </p>
+        </div>
       </div>
     </footer>
   );

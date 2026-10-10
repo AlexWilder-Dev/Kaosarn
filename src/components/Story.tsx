@@ -165,9 +165,9 @@ export function Story() {
                   {beat.photo && hasPhoto('story') && (
                     <Photo
                       slot="story"
-                      alt="The dining room, hung with garlands under the restaurant's red Thai name sign"
+                      alt="A corner of the dining room: plank walls, garlands and a green tufted banquette"
                       sizes="(min-width: 900px) 520px, 90vw"
-                      focus="62% 50%"
+                      focus="50% 45%"
                       className={styles.photo}
                     />
                   )}
@@ -204,13 +204,13 @@ function Sign({ sign }: { sign: StreetSign }) {
 function TukTuk() {
   return (
     <svg viewBox="0 0 32 48" width="30" height="45">
-      <rect x="1.5" y="31" width="5" height="10" rx="2" fill="var(--ink)" />
-      <rect x="25.5" y="31" width="5" height="10" rx="2" fill="var(--ink)" />
-      <rect x="13.5" y="1" width="5" height="9" rx="2" fill="var(--ink)" />
-      <path d="M10 9Q16 4 22 9L27 39Q16 44 5 39Z" fill="var(--turmeric)" />
-      <rect x="6.5" y="15" width="19" height="24" rx="5" fill="var(--chilli)" />
+      <rect x="1.5" y="31" width="5" height="10" rx="2" fill="var(--olive-deep)" />
+      <rect x="25.5" y="31" width="5" height="10" rx="2" fill="var(--olive-deep)" />
+      <rect x="13.5" y="1" width="5" height="9" rx="2" fill="var(--olive-deep)" />
+      <path d="M10 9Q16 4 22 9L27 39Q16 44 5 39Z" fill="var(--cream)" />
+      <rect x="6.5" y="15" width="19" height="24" rx="5" fill="var(--terracotta)" />
       <path d="M9 21h14M9 27h14M9 33h14" stroke="rgba(255,255,255,.4)" strokeWidth="1.5" />
-      <circle cx="16" cy="8.5" r="1.8" fill="var(--paper)" />
+      <circle cx="16" cy="8.5" r="1.8" fill="#fff7e8" />
     </svg>
   );
 }

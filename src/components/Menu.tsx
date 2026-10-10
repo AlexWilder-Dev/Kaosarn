@@ -43,7 +43,7 @@ export function Menu() {
           <div className={styles.introPhoto}>
             <Photo
               slot="menu"
-              alt="A sharing spread from above: satay, spring rolls, papaya salad, larb, curry and more"
+              alt="Larb, som tum and grilled beef salad on enamel plates"
               sizes="(min-width: 900px) 380px, 92vw"
               className={styles.photo}
             />

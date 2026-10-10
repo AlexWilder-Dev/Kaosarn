@@ -14,38 +14,35 @@
 }
 
 .photo {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 11;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 
 .photoTag {
   position: absolute;
-  left: 14px;
-  bottom: -14px;
-  padding: 5px 14px 7px;
-  border-radius: 8px;
-  background: var(--turmeric);
-  color: var(--ink);
-  font-family: var(--font-brush);
-  font-size: 1.15rem;
-  line-height: 1.2;
-  transform: rotate(-3deg);
-  box-shadow: var(--shadow);
+  left: 0;
+  bottom: 0;
+  padding: 8px 16px;
+  background: var(--olive);
+  color: var(--cream);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 /* Filters */
 .filters {
-  margin-top: 26px;
+  margin-top: 28px;
 }
 
 .filterLabel {
-  margin-bottom: 10px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  margin-bottom: 12px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  color: var(--muted);
 }
 
 .chips {
@@ -55,34 +52,32 @@
 }
 
 .chip {
-  --c: var(--leaf);
-  --tint: var(--lime-tint);
+  --c: var(--tag-v);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 46px;
-  padding: 6px 16px 6px 6px;
+  padding: 6px 18px 6px 6px;
   border: 1.5px solid var(--line-strong);
   border-radius: 999px;
-  background: var(--paper);
-  color: var(--ink);
-  font-weight: 600;
-  font-size: 0.98rem;
+  background: transparent;
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 0.96rem;
   line-height: 1;
   transition:
     background-color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    color 0.2s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .chip[data-tag='GF'] {
-  --c: var(--amber);
-  --tint: var(--turmeric-tint);
+  --c: var(--tag-gf);
 }
 
 .chip[data-tag='H'] {
-  --c: var(--enamel-blue);
-  --tint: #dfe8f7;
+  --c: var(--tag-h);
 }
 
 .chip:hover {
@@ -90,8 +85,9 @@
 }
 
 .chip[aria-pressed='true'] {
-  border-color: var(--c);
-  background: var(--tint);
+  border-color: var(--cream);
+  background: var(--cream);
+  color: var(--olive);
 }
 
 .chipMark {
@@ -101,15 +97,16 @@
   height: 34px;
   padding: 0 6px;
   border-radius: 999px;
-  background: var(--tint);
+  border: 1.5px solid var(--c);
   color: var(--c);
-  font-weight: 700;
-  font-size: 0.8rem;
+  font-weight: 800;
+  font-size: 0.78rem;
 }
 
 .chip[aria-pressed='true'] .chipMark {
-  background: var(--c);
-  color: #fff;
+  border-color: var(--olive);
+  background: var(--olive);
+  color: var(--cream);
 }
 
 .chipMark svg {
@@ -120,21 +117,21 @@
 
 .count {
   margin-top: 14px;
-  max-width: 36rem;
+  max-width: 38rem;
   font-size: 0.92rem;
-  color: var(--ink-3);
+  color: var(--muted);
 }
 
 .count strong {
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .clear {
   padding: 4px 2px;
   border: 0;
   background: none;
-  color: var(--chilli);
-  font-weight: 700;
+  color: var(--cream);
+  font-weight: 800;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -145,9 +142,7 @@
   top: var(--header-h);
   z-index: 20;
   margin-bottom: 8px;
-  background: rgba(251, 243, 228, 0.95);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  background: var(--olive-deep);
   border-block: 1px solid var(--line);
 }
 
@@ -179,25 +174,27 @@
   display: flex;
   align-items: center;
   min-height: 40px;
-  padding: 0 16px;
+  padding: 0 18px;
   border-radius: 999px;
-  color: var(--ink-2);
-  font-weight: 600;
-  font-size: 1rem;
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   transition: color 0.2s ease;
 }
 
 .tab[aria-current='true'] {
-  color: #fff;
+  color: var(--olive);
 }
 
 .tabPill {
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  background: var(--chilli);
+  background: var(--cream);
 }
 
 .tabLabel {
@@ -208,96 +205,73 @@
   flex: none;
   min-height: 34px;
   padding: 0 12px;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--cream);
   border-radius: 999px;
-  background: var(--paper);
-  color: var(--ink);
-  font-size: 0.85rem;
-  font-weight: 700;
+  background: transparent;
+  color: var(--cream);
+  font-size: 0.8rem;
+  font-weight: 800;
   white-space: nowrap;
 }
 
 /* Categories */
 .category {
-  --cat: var(--amber);
-  padding-top: clamp(40px, 6vw, 64px);
+  padding-top: clamp(44px, 6vw, 72px);
   /* html already pads by the header height; this clears the sticky section nav */
   scroll-margin-top: 60px;
 }
 
-.category[data-cat='soups'],
-.category[data-cat='mains'] {
-  --cat: var(--chilli);
-}
-
-.category[data-cat='salads'] {
-  --cat: var(--leaf);
-}
-
 .catHead {
-  position: relative;
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 4px 14px;
-  margin-bottom: 24px;
+  gap: 4px 16px;
+  margin-bottom: 8px;
   padding-bottom: 14px;
-}
-
-.catHead::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: min(180px, 40%);
-  height: 5px;
-  border-radius: 5px;
-  background: var(--cat);
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .catTitle {
   font-size: clamp(2rem, 1.5rem + 2.2vw, 3rem);
-  color: var(--ink);
 }
 
 .catThai {
-  font-family: var(--font-brush);
-  font-size: 1.4rem;
-  color: var(--cat);
+  font-size: 1.15rem;
+  color: var(--peach);
 }
 
 .riceNote {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  margin-bottom: 18px;
-  padding: 14px 16px;
-  border-radius: var(--radius-sm);
-  background: var(--turmeric-tint);
-  color: var(--ink-2);
+  margin: 16px 0 8px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--peach);
+  background: var(--olive-soft);
+  color: var(--muted);
   font-size: 0.98rem;
 }
 
 .riceNote strong {
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .riceNote a {
-  color: var(--chilli);
-  font-weight: 700;
+  color: var(--cream);
+  font-weight: 800;
 }
 
 .riceIcon {
   flex: none;
   width: 24px;
   height: 24px;
-  color: var(--amber);
+  color: var(--peach);
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  column-gap: 48px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -305,32 +279,15 @@
 
 .grid > li {
   display: flex;
+  border-bottom: 1px solid var(--line);
 }
 
-/* Dish card: white enamel with a faint inner rim, like the plates in the photos */
+/* Dish: a simple menu-board entry, name and price on one line */
 .dish {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 20px 20px 18px;
-  border-radius: var(--radius);
-  background: var(--paper);
-  box-shadow:
-    inset 0 0 0 1px var(--line),
-    inset 0 0 0 5px var(--paper),
-    inset 0 0 0 6px color-mix(in srgb, var(--cat) 22%, transparent);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.dish:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 0 0 1px var(--line),
-    inset 0 0 0 5px var(--paper),
-    inset 0 0 0 6px color-mix(in srgb, var(--cat) 45%, transparent),
-    var(--shadow);
+  padding: 20px 0 18px;
 }
 
 .dishHead {
@@ -341,15 +298,15 @@
 }
 
 .dishName {
-  font-size: 1.18rem;
-  color: var(--ink);
+  font-size: 1.2rem;
+  color: var(--cream);
 }
 
 .price {
   flex: none;
-  font-family: var(--font-display);
-  font-size: 1.08rem;
-  color: var(--chilli);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--cream);
   font-variant-numeric: tabular-nums;
 }
 
@@ -363,19 +320,17 @@
 }
 
 .thaiName {
-  font-weight: 500;
-  color: var(--cat);
+  color: var(--peach);
 }
 
 .gloss {
-  font-family: var(--font-brush);
-  font-size: 1.05rem;
-  color: var(--ink-2);
+  font-style: italic;
+  color: var(--muted);
 }
 
 .desc {
   margin-top: 8px;
-  color: var(--ink-2);
+  color: var(--muted);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -390,7 +345,7 @@
 }
 
 .tag {
-  --c: var(--leaf);
+  --c: var(--tag-v);
   display: inline-grid;
   place-items: center;
   min-width: 30px;
@@ -398,10 +353,10 @@
   margin-left: 6px;
   padding: 0 7px;
   border: 1.5px solid var(--c);
-  border-radius: 6px;
+  border-radius: 999px;
   color: var(--c);
-  font-size: 0.74rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 800;
   text-decoration: none;
   cursor: help;
   vertical-align: middle;
@@ -412,11 +367,11 @@
 }
 
 .tag[data-tag='GF'] {
-  --c: var(--amber);
+  --c: var(--tag-gf);
 }
 
 .tag[data-tag='H'] {
-  --c: var(--enamel-blue);
+  --c: var(--tag-h);
 }
 
 .noRice {
@@ -424,37 +379,39 @@
   align-items: center;
   gap: 6px;
   min-height: 26px;
-  padding: 0 10px 0 8px;
+  padding: 0 11px 0 9px;
   border-radius: 999px;
-  background: var(--turmeric-tint);
-  color: var(--ink);
-  font-size: 0.84rem;
-  font-weight: 600;
+  background: var(--olive-soft);
+  color: var(--cream);
+  font-size: 0.82rem;
+  font-weight: 700;
   text-decoration: none;
 }
 
 .noRice svg {
   width: 15px;
   height: 15px;
-  color: var(--amber);
+  color: var(--peach);
 }
 
 .noRice:hover {
-  background: var(--turmeric);
+  background: var(--oxblood);
 }
 
 /* Spice picker */
 .spice {
   margin-top: 14px;
   padding-top: 14px;
-  border-top: 1.5px dashed var(--line-strong);
+  border-top: 1px dashed var(--line-strong);
 }
 
 .spiceLabel {
-  margin-bottom: 8px;
-  font-family: var(--font-brush);
-  font-size: 1.15rem;
-  color: var(--chilli);
+  margin-bottom: 10px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .spiceChips {
@@ -468,17 +425,16 @@
   min-height: 46px;
   padding: 4px 6px;
   border: 1.5px solid var(--line-strong);
-  border-radius: 14px;
-  background: var(--paper);
-  color: var(--ink-2);
-  font-size: 0.88rem;
-  font-weight: 600;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cream);
+  font-size: 0.86rem;
+  font-weight: 700;
   -webkit-tap-highlight-color: transparent;
 }
 
 .spiceChip:hover {
-  border-color: var(--chilli);
-  color: var(--ink);
+  border-color: var(--cream);
 }
 
 .spiceChip[aria-checked='true'] {
@@ -489,8 +445,8 @@
 .spicePill {
   position: absolute;
   inset: -1.5px;
-  border-radius: 14px;
-  background: var(--chilli);
+  border-radius: 999px;
+  background: var(--oxblood);
 }
 
 .spiceText {
@@ -511,7 +467,7 @@
 .chillies svg {
   width: 13px;
   height: 13px;
-  color: var(--chilli);
+  color: var(--tag-h);
   margin-left: -2px;
 }
 
@@ -523,24 +479,22 @@
   overflow: hidden;
   padding-top: 8px;
   font-size: 0.92rem;
-  color: var(--ink-2);
+  color: var(--muted);
 }
 
 .spiceHint strong {
-  color: var(--chilli);
+  color: var(--cream);
 }
 
 .empty {
-  padding: 20px;
-  border: 1.5px dashed var(--line-strong);
-  border-radius: var(--radius);
-  color: var(--ink-2);
+  padding: 20px 0;
+  color: var(--muted);
 }
 
 /* Sides: a compact price list */
 .sides {
   display: grid;
-  gap: 2px 44px;
+  gap: 0 48px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -550,17 +504,17 @@
   display: flex;
   align-items: baseline;
   gap: 10px;
-  padding: 11px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
 }
 
 .sideName {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.05rem;
 }
 
 .sideGloss {
-  color: var(--ink-2);
+  color: var(--muted);
   font-weight: 400;
   font-size: 0.95rem;
 }
@@ -568,25 +522,22 @@
 .leader {
   flex: 1;
   min-width: 16px;
-  border-bottom: 2px dotted var(--line-strong);
+  border-bottom: 1.5px dotted var(--line-strong);
   transform: translateY(-4px);
 }
 
 .footnote {
-  margin-top: 44px;
+  margin-top: 48px;
   padding: 14px 18px;
-  border-left: 4px solid var(--chilli);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  background: var(--turmeric-tint);
-  font-family: var(--font-brush);
-  font-size: 1.2rem;
-  color: var(--ink);
+  border-left: 3px solid var(--peach);
+  background: var(--olive-soft);
+  font-style: italic;
+  color: var(--cream);
 }
 
 @media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
   }
 
   .sides {
@@ -596,7 +547,7 @@
 
 @media (min-width: 900px) {
   .intro[data-photo='true'] {
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: 1fr 400px;
     grid-template-areas: 'head photo' 'body photo';
     grid-template-rows: auto 1fr;
     align-items: start;
@@ -614,7 +565,6 @@
 
   .introPhoto {
     grid-area: photo;
-    transform: rotate(2deg);
   }
 
   .photo {

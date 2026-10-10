@@ -1,111 +1,98 @@
 .hero {
   position: relative;
   padding-top: var(--header-h);
+  padding-bottom: clamp(48px, 8vw, 88px);
+}
+
+.frame {
+  position: relative;
+  height: min(68svh, 640px);
+  min-height: 380px;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .media {
-  position: relative;
-  margin-inline: 10px;
-  border-radius: 24px;
-  overflow: hidden;
-  transform-origin: 50% 30%;
+  position: absolute;
+  inset: -6% 0 0;
 }
 
 .photo {
-  height: min(50svh, 480px);
-  min-height: 280px;
+  height: 100%;
 }
 
-.copy {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 var(--gutter) clamp(48px, 9vw, 96px);
-  text-align: center;
+/* Darkens the lower left so the tagline reads over the photo */
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(47, 50, 41, 0) 35%, rgba(47, 50, 41, 0.85) 100%),
+    linear-gradient(90deg, rgba(47, 50, 41, 0.45) 0%, rgba(47, 50, 41, 0) 60%);
+  pointer-events: none;
 }
 
 .title {
-  width: 100%;
-  max-width: 560px;
-  margin-top: -70px;
-}
-
-.sign {
-  width: 100%;
-  height: auto;
-}
-
-.tagline {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(22px, 5vw, 56px);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0 0.5em;
-  margin-top: 22px;
-  font-family: var(--font-display);
-  font-size: clamp(1.05rem, 0.9rem + 1vw, 1.5rem);
-  line-height: 1.35;
-  color: var(--ink);
+  flex-direction: column;
+  font-size: clamp(2.6rem, 1.6rem + 5vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--cream);
 }
 
-.tagline span {
-  display: inline-flex;
-  gap: 0.5em;
-  white-space: nowrap;
+.line {
+  display: block;
 }
 
-.tagline i {
-  font-style: normal;
-  color: var(--chilli);
+.below {
+  margin-top: 28px;
 }
 
 .meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 10px 16px;
-  margin-top: 20px;
+  gap: 12px 18px;
 }
 
 .where {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--ink-2);
+  gap: 7px;
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
 .where svg {
   width: 17px;
   height: 17px;
-  color: var(--chilli);
+  color: var(--peach);
 }
 
 .ctas {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 12px;
-  margin-top: 26px;
+  margin-top: 24px;
 }
 
 .ctas :global(.btn) {
-  min-width: 150px;
+  min-width: 170px;
 }
 
 .ratings {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 20px;
+  gap: 6px 22px;
   margin: 24px 0 0;
   padding: 0;
   list-style: none;
   font-size: 0.92rem;
-  color: var(--ink-2);
+  color: var(--muted);
 }
 
 .ratings li {
@@ -115,86 +102,42 @@
 }
 
 .ratings strong {
-  color: var(--ink);
-}
-
-.ratings span {
-  color: var(--ink-3);
+  color: var(--cream);
 }
 
 .star {
-  width: 16px;
-  height: 16px;
-  color: var(--turmeric);
+  width: 15px;
+  height: 15px;
+  color: var(--tag-gf);
 }
 
-@media (max-width: 479px) {
-  .tagline {
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.4;
-  }
-
-  .tagline i {
-    display: none;
-  }
-}
-
-@media (min-width: 960px) {
-  .hero {
-    display: grid;
-    grid-template-columns: 1.08fr 1fr;
-    align-items: center;
-    gap: clamp(32px, 4vw, 64px);
-    min-height: 100svh;
-    padding: calc(var(--header-h) + 12px) var(--gutter) 40px;
-    max-width: calc(var(--max) + var(--gutter) * 2 + 120px);
-    margin-inline: auto;
-  }
-
-  .media {
-    order: 2;
-    margin: 0;
-    border-radius: 32px;
-    align-self: stretch;
-  }
-
-  .photo {
-    height: 100%;
-    min-height: 560px;
-    max-height: calc(100svh - var(--header-h) - 52px);
-  }
-
-  .copy {
-    order: 1;
-    align-items: flex-start;
-    padding: 0;
-    text-align: left;
+@media (min-width: 900px) {
+  .frame {
+    width: calc(100% - var(--gutter) * 2);
+    max-width: calc(var(--max) + 120px);
+    height: min(74svh, 720px);
+    margin: 24px auto 0;
   }
 
   .title {
-    margin-top: 0;
-    max-width: 600px;
+    left: clamp(32px, 5vw, 72px);
   }
 
-  .tagline,
-  .meta,
-  .ctas,
-  .ratings {
-    justify-content: flex-start;
-  }
-
-  .tagline {
-    margin-top: 34px;
+  .below {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 16px 32px;
+    max-width: calc(var(--max) + 120px);
   }
 
   .ctas {
-    margin-top: 32px;
+    order: -1;
+    margin-top: 0;
   }
 
-  .ctas :global(.btn) {
-    min-height: 56px;
-    min-width: 180px;
-    font-size: 1.08rem;
+  .ratings {
+    margin-top: 0;
+    justify-content: flex-end;
   }
 }

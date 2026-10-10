@@ -12,8 +12,7 @@
     "deploy": "npm run photos && npm run build && gh-pages -d dist -t"
   },
   "dependencies": {
-    "@fontsource/chonburi": "^5.3.0",
-    "@fontsource/pattaya": "^5.3.0",
+    "@fontsource/nunito-sans": "^5.3.0",
     "@fontsource/sarabun": "^5.3.0",
     "framer-motion": "^14.1.0",
     "react": "^19.3.0",

@@ -236,7 +236,7 @@ function Success({ values, onReset }: { values: Values; onReset: () => void }) {
   );
 }
 
-const COLORS = ['var(--chilli)', 'var(--turmeric)', 'var(--lime)'];
+const COLORS = ['var(--cream)', 'var(--peach)', 'var(--tag-h)'];
 
 function Confetti() {
   return (
